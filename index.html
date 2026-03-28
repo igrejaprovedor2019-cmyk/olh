@@ -5,172 +5,168 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIRIUS - FICHA OFICIAL</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        /* CORES SIRIUS */
+        /* CORES PREMIUM SIRIUS */
         :root { 
             --blue: #001c3d; 
             --gold: #ffcc00; 
             --dark-gold: #d4ac00;
             --white: #ffffff;
-            --gray: #f4f7f6;
+            --bg: #0b0e14;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
 
         body { 
-            background: linear-gradient(135deg, #001c3d 0%, #000c1a 100%); 
+            background-color: var(--bg);
+            background-image: radial-gradient(circle at top right, #1a2a44, transparent);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            padding-bottom: 40px;
+            padding: 20px 0 40px 0;
         }
 
-        /* CABEÇALHO COM ESTILO */
+        /* CABEÇALHO COM A SUA LOGO */
         .header { 
-            padding: 40px 20px; 
             text-align: center; 
-            color: var(--white);
+            margin-bottom: 30px;
         }
         
-        .header i { 
-            font-size: 50px; 
-            color: var(--gold); 
-            filter: drop-shadow(0 0 10px rgba(255, 204, 0, 0.5));
-            margin-bottom: 15px; 
+        .logo-container img {
+            max-width: 150px; /* Ajuste o tamanho da logo aqui */
+            height: auto;
+            filter: drop-shadow(0 0 10px rgba(255, 204, 0, 0.4));
+            margin-bottom: 10px;
         }
 
         .header h1 { 
-            font-size: 22px; 
-            letter-spacing: 3px; 
+            color: var(--white);
+            font-size: 24px; 
+            letter-spacing: 5px; 
             text-transform: uppercase;
             font-weight: 800;
         }
 
-        /* CONTAINER PRINCIPAL */
+        /* CONTAINER PRINCIPAL (ESTILO CARTÃO PREMIUM) */
         .container { 
-            max-width: 480px; 
-            width: 90%;
+            max-width: 500px; 
+            width: 92%;
             margin: 0 auto; 
-            background: var(--white); 
-            border-radius: 25px; 
+            background: #161b22; 
+            border-radius: 20px; 
             overflow: hidden; 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            border: 1px solid rgba(255,255,255,0.05);
         }
 
         /* BARRA DE PROGRESSO */
-        .prog-container { background: #e0e0e0; height: 6px; }
+        .prog-container { background: #0d1117; height: 8px; }
         .prog-fill { 
             height: 100%; 
-            background: linear-gradient(90deg, var(--gold), var(--dark-gold)); 
+            background: linear-gradient(90deg, var(--gold), #fff); 
             width: 10%; 
-            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); 
+            transition: 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); 
         }
 
-        form { padding: 30px; }
+        form { padding: 35px 25px; }
         .step { display: none; }
-        .step.active { display: block; animation: slideIn 0.4s ease-out; }
+        .step.active { display: block; animation: fadeIn 0.5s ease; }
 
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         h2 { 
-            font-size: 14px; 
-            color: var(--blue); 
-            margin-bottom: 20px; 
+            font-size: 16px; 
+            color: var(--gold); 
+            margin-bottom: 25px; 
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             text-transform: uppercase;
-            font-weight: 700;
         }
 
-        h2::after {
-            content: "";
-            flex: 1;
-            height: 2px;
-            background: var(--gray);
-        }
-
-        /* CAMPOS DE ENTRADA */
-        .field { margin-bottom: 18px; }
+        /* INPUTS ESTILIZADOS */
+        .field { margin-bottom: 20px; }
         label { 
             display: block; 
             font-size: 11px; 
-            font-weight: 700; 
-            color: #666; 
+            font-weight: 600; 
+            color: #8b949e; 
             text-transform: uppercase; 
-            margin-bottom: 6px; 
-            padding-left: 5px;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
         }
 
         input, select, textarea { 
             width: 100%; 
-            padding: 14px; 
-            border: 2px solid #edf2f7; 
-            border-radius: 12px; 
+            padding: 15px; 
+            border: 1px solid #30363d; 
+            border-radius: 10px; 
             font-size: 15px; 
-            background: #f8fafc;
+            background: #0d1117;
+            color: white;
             transition: 0.3s;
         }
 
-        input:focus { border-color: var(--gold); outline: none; background: white; }
+        input:focus, select:focus, textarea:focus { border-color: var(--gold); outline: none; background: #161b22; box-shadow: 0 0 10px rgba(255, 204, 0, 0.2); }
 
         /* OPÇÕES DE MARCAR (CHECKBOX/RADIO) */
         .opts { 
             display: grid; 
             grid-template-columns: 1fr 1fr; 
-            gap: 10px; 
-            background: #f8fafc; 
-            padding: 15px; 
-            border-radius: 12px;
+            gap: 12px; 
+            background: #0d1117; 
+            padding: 18px; 
+            border-radius: 10px;
+            border: 1px solid #30363d;
         }
 
         .opts label { 
             display: flex; 
             align-items: center; 
             gap: 10px; 
-            font-weight: 500; 
+            font-weight: 400; 
             text-transform: none; 
-            font-size: 13px; 
+            font-size: 14px; 
             cursor: pointer;
             margin: 0;
-            color: #444;
+            color: #c9d1d9;
         }
 
         .opts input[type="radio"], .opts input[type="checkbox"] { 
             width: 18px; 
             height: 18px; 
-            accent-color: var(--blue);
+            accent-color: var(--gold);
         }
 
         /* BOTÕES */
-        .btns { display: flex; gap: 12px; margin-top: 30px; }
+        .btns { display: flex; gap: 12px; margin-top: 35px; }
         button { 
             flex: 1; 
             padding: 18px; 
             border: none; 
-            border-radius: 15px; 
-            font-weight: 700; 
+            border-radius: 12px; 
+            font-weight: 600; 
             cursor: pointer; 
             text-transform: uppercase;
-            transition: 0.3s;
-            font-size: 13px;
+            transition: 0.3s ease;
+            font-size: 14px;
+            letter-spacing: 1px;
         }
 
-        .next { background: var(--blue); color: white; box-shadow: 0 4px 15px rgba(0,28,61,0.3); }
-        .next:hover { transform: translateY(-2px); background: #002d62; }
+        .next { background: var(--blue); color: white; box-shadow: 0 5px 15px rgba(0,28,61,0.3); }
+        .next:hover { transform: translateY(-3px); background: #002d62; box-shadow: 0 8px 20px rgba(0,28,61,0.5); }
 
-        .prev { background: #f0f0f0; color: #666; }
+        .prev { background: #30363d; color: #8b949e; }
+        .prev:hover { background: #3a4149; color: white; }
 
         .send { 
             background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%); 
             color: white; 
-            font-size: 15px;
-            box-shadow: 0 4px 15px rgba(39,174,96,0.3);
+            font-size: 16px;
+            box-shadow: 0 5px 15px rgba(39,174,96,0.3);
         }
+        .send:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 20px rgba(39,174,96,0.5); }
 
         /* MODAL WHATSAPP */
         .modal { 
@@ -186,216 +182,22 @@
         }
 
         .m-box { 
-            background: white; 
-            padding: 35px; 
+            background: #161b22; 
+            padding: 40px; 
             border-radius: 25px; 
             text-align: center; 
             max-width: 400px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            border: 1px solid rgba(255,204,0,0.2);
         }
 
-        .m-box i { font-size: 50px; color: #25d366; margin-bottom: 20px; }
-        .m-box h3 { margin-bottom: 10px; color: var(--blue); }
-        .m-box p { font-size: 14px; color: #666; margin-bottom: 25px; line-height: 1.5; }
+        .m-box i { font-size: 60px; color: #25d366; margin-bottom: 25px; filter: drop-shadow(0 0 10px rgba(37, 211, 102, 0.4));}
+        .m-box h3 { margin-bottom: 15px; color: var(--gold); font-size: 20px; }
+        .m-box p { font-size: 14px; color: #8b949e; margin-bottom: 30px; line-height: 1.6; }
     </style>
 </head>
 <body>
 
 <div class="header">
-    <i class="fas fa-star"></i>
-    <h1>SIRIUS</h1>
-</div>
-
-<div class="container">
-    <div class="prog-container"><div class="prog-fill" id="bar"></div></div>
-    
-    <form id="fSirius">
-        <div class="step active">
-            <h2><i class="fas fa-user"></i> Identificação 1/10</h2>
-            <div class="field"><label>Nome Completo:</label><input type="text" name="Nome" required placeholder="Digite seu nome"></div>
-            <div class="field"><label>Função no Clube:</label><input type="text" name="Funcao"></div>
-            <div class="field"><label>Sexo:</label>
-                <div class="opts">
-                    <label><input type="radio" name="Sexo" value="Feminino"> Feminino</label>
-                    <label><input type="radio" name="Sexo" value="Masculino"> Masculino</label>
-                </div>
-            </div>
-            <div class="field"><label>Nascimento:</label><input type="text" name="Nasc" placeholder="00/00/0000"></div>
-            <div class="btns"><button type="button" class="next">Próximo</button></div>
-        </div>
-
-        <div class="step">
-            <h2><i class="fas fa-phone"></i> Contatos 2/10</h2>
-            <div class="field"><label>Estado Civil:</label><input type="text" name="Est_Civil"></div>
-            <div class="field"><label>WhatsApp:</label><input type="tel" name="Celular" placeholder="(00) 00000-0000"></div>
-            <div class="field"><label>E-mail:</label><input type="email" name="Email"></div>
-            <div class="field"><label>Batizado (IASD):</label>
-                <div class="opts">
-                    <label><input type="radio" name="Batizado" value="Sim"> Sim</label>
-                    <label><input type="radio" name="Batizado" value="Não"> Não</label>
-                </div>
-            </div>
-            <div class="btns"><button type="button" class="prev">Voltar</button><button type="button" class="next">Próximo</button></div>
-        </div>
-
-        <div class="step">
-            <h2><i class="fas fa-id-card"></i> Documentos 3/10</h2>
-            <div class="field"><label>RG:</label><input type="text" name="RG"></div>
-            <div class="field"><label>Orgão Expedidor:</label><input type="text" name="Org"></div>
-            <div class="field"><label>CPF:</label><input type="text" name="CPF"></div>
-            <div class="field"><label>Tamanho Camiseta:</label><input type="text" name="Camiseta"></div>
-            <div class="field"><label>Certidão de Nascimento:</label><input type="text" name="Certidao"></div>
-            <div class="btns"><button type="button" class="prev">Voltar</button><button type="button" class="next">Próximo</button></div>
-        </div>
-
-        <div class="step">
-            <h2><i class="fas fa-home"></i> Endereço 4/10</h2>
-            <div class="field"><label>Rua/Avenida:</label><input type="text" name="Rua"></div>
-            <div class="field"><label>Número:</label><input type="text" name="Num"></div>
-            <div class="field"><label>Bairro:</label><input type="text" name="Bairro"></div>
-            <div class="field"><label>CEP:</label><input type="text" name="CEP"></div>
-            <div class="field"><label>Cidade/Estado:</label><input type="text" name="Cidade_UF"></div>
-            <div class="btns"><button type="button" class="prev">Voltar</button><button type="button" class="next">Próximo</button></div>
-        </div>
-
-        <div class="step">
-            <h2><i class="fas fa-graduation-cap"></i> Escolaridade 5/10</h2>
-            <div class="opts">
-                <label><input type="checkbox" name="Escola" value="Ed. Infantil"> Ed. Infantil</label>
-                <label><input type="checkbox" name="Escola" value="Fundamental"> Fundamental</label>
-                <label><input type="checkbox" name="Escola" value="Médio"> Médio</label>
-                <label><input type="checkbox" name="Escola" value="Técnico"> Técnico</label>
-                <label><input type="checkbox" name="Escola" value="Superior"> Superior</label>
-                <label><input type="checkbox" name="Escola" value="Pós"> Pós</label>
-                <label><input type="checkbox" name="Escola" value="Mestrado"> Mestrado</label>
-                <label><input type="checkbox" name="Escola" value="MBA"> MBA</label>
-                <label><input type="checkbox" name="Escola" value="Doutorado"> Doutorado</label>
-            </div>
-            <div class="btns"><button type="button" class="prev">Voltar</button><button type="button" class="next">Próximo</button></div>
-        </div>
-
-        <div class="step">
-            <h2><i class="fas fa-book"></i> Área de Estudo 6/10</h2>
-            <div class="opts">
-                <label><input type="checkbox" name="Area" value="Agrárias"> Agrárias</label>
-                <label><input type="checkbox" name="Area" value="Biológicas"> Biológicas</label>
-                <label><input type="checkbox" name="Area" value="Saúde"> Saúde</label>
-                <label><input type="checkbox" name="Area" value="Exatas"> Exatas</label>
-                <label><input type="checkbox" name="Area" value="Humanas"> Humanas</label>
-                <label><input type="checkbox" name="Area" value="Sociais"> Sociais</label>
-                <label><input type="checkbox" name="Area" value="Engenharia"> Engenharia</label>
-                <label><input type="checkbox" name="Area" value="Tecnologia"> Tecnologia</label>
-                <label><input type="checkbox" name="Area" value="Letras/Artes"> Letras/Artes</label>
-            </div>
-            <div class="btns"><button type="button" class="prev">Voltar</button><button type="button" class="next">Próximo</button></div>
-        </div>
-
-        <div class="step">
-            <h2><i class="fas fa-briefcase-medical"></i> Profissional 7/10</h2>
-            <div class="field"><label>Curso/Faculdade:</label><input type="text" name="Estudos"></div>
-            <div class="field"><label>Profissão na Saúde:</label>
-                <div class="opts">
-                    <label><input type="checkbox" name="Prof" value="Dentista"> Dentista</label>
-                    <label><input type="checkbox" name="Prof" value="Enfermeiro"> Enfermeiro</label>
-                    <label><input type="checkbox" name="Prof" value="Médico"> Médico</label>
-                    <label><input type="checkbox" name="Prof" value="Socorrista"> Socorrista</label>
-                </div>
-            </div>
-            <div class="field"><label>Pai:</label><input type="text" name="Pai"></div>
-            <div class="field"><label>Mãe:</label><input type="text" name="Mae"></div>
-            <div class="btns"><button type="button" class="prev">Voltar</button><button type="button" class="next">Próximo</button></div>
-        </div>
-
-        <div class="step">
-            <h2><i class="fas fa-exclamation-triangle"></i> Emergência 8/10</h2>
-            <div class="field"><label>Falar com:</label><input type="text" name="Emerg_Nome"></div>
-            <div class="field"><label>Parentesco:</label><input type="text" name="Parentesco"></div>
-            <div class="field"><label>Telefone Urgente:</label><input type="tel" name="Emerg_Tel"></div>
-            <div class="btns"><button type="button" class="prev">Voltar</button><button type="button" class="next">Próximo</button></div>
-        </div>
-
-        <div class="step">
-            <h2><i class="fas fa-notes-medical"></i> Saúde 9/10</h2>
-            <div class="field"><label>Número do SUS:</label><input type="text" name="SUS"></div>
-            <div class="field"><label>Plano de Saúde:</label><input type="text" name="Plano"></div>
-            <div class="field"><label>Tipo Sanguíneo:</label>
-                <div class="opts">
-                    <label><input type="radio" name="Sangue" value="A"> A</label>
-                    <label><input type="radio" name="Sangue" value="B"> B</label>
-                    <label><input type="radio" name="Sangue" value="O"> O</label>
-                    <label><input type="radio" name="Sangue" value="AB"> AB</label>
-                </div>
-            </div>
-            <div class="btns"><button type="button" class="prev">Voltar</button><button type="button" class="next">Próximo</button></div>
-        </div>
-
-        <div class="step">
-            <h2><i class="fas fa-virus"></i> Histórico 10/10</h2>
-            <div class="opts">
-                <label><input type="checkbox" name="Teve" value="Catapora"> Catapora</label>
-                <label><input type="checkbox" name="Teve" value="Dengue"> Dengue</label>
-                <label><input type="checkbox" name="Teve" value="Covid"> Covid</label>
-                <label><input type="checkbox" name="Teve" value="Meningite"> Meningite</label>
-                <label><input type="checkbox" name="Teve" value="Hepatite"> Hepatite</label>
-                <label><input type="checkbox" name="Teve" value="Malaria"> Malária</label>
-            </div>
-            <div class="field" style="margin-top:20px;"><label>Assinatura Resp.:</label><input type="text" name="Assinatura" required placeholder="Nome completo"></div>
-            <div class="btns"><button type="button" class="prev">Voltar</button><button type="submit" class="send">Finalizar Ficha</button></div>
-        </div>
-    </form>
-</div>
-
-<div class="modal" id="mZap">
-    <div class="m-box">
-        <i class="fab fa-whatsapp"></i>
-        <h3>Quase lá!</h3>
-        <p>Ao clicar abaixo, o WhatsApp abrirá com todos os seus dados. Basta clicar em enviar!</p>
-        <button id="btnGo" style="background:#25d366; color:white; width:100%">ABRIR WHATSAPP</button>
-    </div>
-</div>
-
-<script>
-    const steps = Array.from(document.querySelectorAll(".step"));
-    const bar = document.getElementById("bar");
-    let zapUrl = "";
-
-    document.querySelectorAll(".next").forEach(b => {
-        b.onclick = () => {
-            const current = document.querySelector(".step.active");
-            const i = steps.indexOf(current);
-            current.classList.remove("active");
-            steps[i+1].classList.add("active");
-            bar.style.width = ((i+2)*10) + "%";
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        }
-    });
-
-    document.querySelectorAll(".prev").forEach(b => {
-        b.onclick = () => {
-            const current = document.querySelector(".step.active");
-            const i = steps.indexOf(current);
-            current.classList.remove("active");
-            steps[i-1].classList.add("active");
-            bar.style.width = ((i)*10) + "%";
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        }
-    });
-
-    document.getElementById("fSirius").onsubmit = function(e) {
-        e.preventDefault();
-        let msg = "⭐ *FICHA SIRIUS OFICIAL* ⭐\n\n";
-        const dados = new FormData(this);
-        
-        for (let [key, value] of dados.entries()) {
-            if(value) msg += `*${key}:* ${value}\n`;
-        }
-
-        zapUrl = `https://api.whatsapp.com/send?phone=559291404115&text=${encodeURIComponent(msg)}`;
-        document.getElementById("mZap").style.display = "flex";
-    };
-
-    document.getElementById("btnGo").onclick = () => { window.location.href = zapUrl; };
-</script>
-
-</body>
-</html>
+    <div class="logo-container">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeAAAAKACAYAAAEc6S6nAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAP+lSURBVHhe7J0HoFxlmf5/bU6fnZ5kMikkIYSESCEJJZSAoAhYQEVFsUfW/ndVwXWRta2uvVfXVUVX74pdUfau7qq4FpAFxUoSIPSEkJ7JJDP9tnP79//nO+/MmZkzM5kkE/LmR+adO+/ce/vep3znwF9+OBAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRA
