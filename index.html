@@ -4,137 +4,110 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIRIUS - FICHA OFICIAL</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root { --blue: #001c3d; --gold: #ffcc00; --bg: #001c3d; --card: rgba(22, 27, 34, 0.95); }
-        
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
-        
+        /* ESTILO VISUAL */
         body { 
-            background-color: var(--bg); 
-            background-image: radial-gradient(circle, #002d62 0%, #001c3d 100%);
+            background: #001c3d; /* Azul escuro Sirius */
             color: white; 
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex; flex-direction: column; align-items: center;
+            margin: 0; padding: 20px; min-height: 100vh;
         }
-
-        .header { text-align: center; margin-bottom: 30px; z-index: 10; }
-        .logo { width: 120px; filter: drop-shadow(0 0 10px rgba(255,204,0,0.3)); margin-bottom: 10px; }
-        .header h1 { font-size: 22px; letter-spacing: 2px; color: white; text-transform: uppercase; }
-
+        .header { text-align: center; margin-bottom: 20px; }
+        .logo { width: 110px; border-radius: 50%; margin-bottom: 10px; border: 2px solid #ffcc00; }
+        
         .container { 
-            max-width: 550px; 
-            width: 90%; 
-            background: var(--card); 
-            border-radius: 20px; 
+            background: rgba(255, 255, 255, 0.08); 
+            padding: 25px; border-radius: 20px; 
+            width: 100%; max-width: 500px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.1);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-            overflow: hidden;
-            position: relative;
         }
 
-        .prog-bar { height: 6px; background: rgba(255,255,255,0.1); }
-        .prog-fill { height: 100%; background: var(--gold); width: 10%; transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
-        
-        form { padding: 30px; }
+        /* NAVEGAÇÃO */
         .step { display: none; }
-        /* Força a primeira etapa a ser visível imediatamente */
-        .step.active { display: block; animation: slideUp 0.5s ease; }
+        .step.active { display: block !important; }
 
-        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        h2 { color: var(--gold); font-size: 18px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
-        label { display: block; font-size: 11px; color: #aaa; margin-bottom: 5px; text-transform: uppercase; font-weight: 600; }
-        
+        /* PERGUNTAS */
+        h2 { color: #ffcc00; font-size: 18px; border-bottom: 1px solid #ffcc00; padding-bottom: 5px; margin-bottom: 15px; }
+        label { display: block; margin: 12px 0 5px; font-size: 11px; text-transform: uppercase; font-weight: bold; color: #ddd; }
         input, select, textarea { 
-            width: 100%; padding: 14px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.1); 
-            border-radius: 10px; background: rgba(0,0,0,0.2); color: white; font-size: 14px;
+            width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #333; 
+            background: #050a14; color: white; margin-bottom: 5px; box-sizing: border-box;
         }
-
-        .grid-checkbox { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
-        .check-item { display: flex; align-items: center; gap: 10px; font-size: 13px; background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px; cursor: pointer; }
-        .check-item input { width: auto; margin-bottom: 0; }
-
-        .btns { display: flex; gap: 12px; margin-top: 10px; }
-        button { flex: 1; padding: 16px; border-radius: 12px; border: none; font-weight: 800; cursor: pointer; text-transform: uppercase; transition: 0.3s; }
-        .next { background: var(--gold); color: #000; }
-        .prev { background: rgba(255,255,255,0.1); color: white; }
-        .send { background: #25d366; color: white; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); }
-        button:hover { transform: scale(1.02); filter: brightness(1.1); }
+        .row { display: flex; gap: 10px; }
+        
+        /* BOTÕES */
+        .btns { display: flex; gap: 10px; margin-top: 25px; }
+        button { flex: 1; padding: 15px; border-radius: 10px; border: none; font-weight: 900; cursor: pointer; text-transform: uppercase; }
+        .next { background: #ffcc00; color: #000; }
+        .prev { background: #333; color: #fff; }
+        .send { background: #25d366; color: #fff; box-shadow: 0 4px 10px rgba(37,211,102,0.4); }
     </style>
 </head>
 <body>
 
 <div class="header">
-    <img src="https://i.ibb.co/NdMBHN3N/Airbrush-IMAGE-ENHANCER-1772282903019-1772282903019-1.jpg" class="logo" alt="Sirius">
-    <h1>Clube de Desbravadores Sirius</h1>
+    <img src="https://i.ibb.co/NdMBHN3N/Airbrush-IMAGE-ENHANCER-1772282903019-1772282903019-1.jpg" class="logo">
+    <h1 style="font-size: 20px; margin: 0;">CLUBE SIRIUS</h1>
 </div>
 
 <div class="container">
-    <div class="prog-bar"><div class="prog-fill" id="bar"></div></div>
-    <form id="fSirius">
+    <form id="formCompleto">
         
         <div class="step active">
-            <h2><i class="fas fa-id-card"></i> Identificação</h2>
+            <h2>1. Dados Pessoais</h2>
             <label>Nome Completo:</label><input type="text" name="Nome" required>
             <label>Função:</label><input type="text" name="Funcao">
-            <label>Data de Nascimento:</label><input type="date" name="Nascimento">
-            <label>Sexo:</label>
-            <select name="Sexo"><option>Masculino</option><option>Feminino</option></select>
-            <div class="btns"><button type="button" class="next" onclick="nextStep()">Começar</button></div>
+            <div class="row">
+                <div style="flex:1"><label>Nascimento:</label><input type="date" name="Nascimento"></div>
+                <div style="flex:1"><label>Sexo:</label><select name="Sexo"><option>Feminino</option><option>Masculino</option></select></div>
+            </div>
+            <label>Estado Civil:</label><input type="text" name="EstadoCivil">
+            <label>Telefone / Celular:</label><input type="tel" name="Celular">
+            <div class="btns"><button type="button" class="next" onclick="mudar(1)">Próximo</button></div>
         </div>
 
         <div class="step">
-            <h2><i class="fas fa-envelope"></i> Contatos</h2>
-            <label>E-mail:</label><input type="email" name="Email">
-            <label>Telefone Celular:</label><input type="tel" name="Celular" placeholder="(00) 00000-0000">
-            <label>Batizado na IASD?</label>
-            <select name="Batizado"><option>Sim</option><option>Não</option></select>
+            <h2>2. Documentos e Local</h2>
+            <div class="row">
+                <div style="flex:1"><label>RG:</label><input type="text" name="RG"></div>
+                <div style="flex:1"><label>Org. Expedidor:</label><input type="text" name="OrgExp"></div>
+            </div>
+            <label>CPF:</label><input type="text" name="CPF">
+            <label>Endereço Completo:</label><input type="text" name="Endereco">
+            <label>Bairro / CEP:</label><input type="text" name="Bairro_CEP">
+            <label>Tamanho Camiseta:</label>
+            <select name="Camiseta"><option>PP</option><option>P</option><option>M</option><option>G</option><option>GG</option></select>
             <div class="btns">
-                <button type="button" class="prev" onclick="prevStep()">Voltar</button>
-                <button type="button" class="next" onclick="nextStep()">Próximo</button>
+                <button type="button" class="prev" onclick="mudar(0)">Voltar</button>
+                <button type="button" class="next" onclick="mudar(2)">Próximo</button>
             </div>
         </div>
 
         <div class="step">
-            <h2><i class="fas fa-map-marked-alt"></i> Endereço</h2>
-            <label>CEP:</label><input type="text" name="CEP">
-            <label>Rua e Número:</label><input type="text" name="Endereco">
-            <label>Bairro:</label><input type="text" name="Bairro">
-            <label>Cidade/Estado:</label><input type="text" name="CidadeEstado">
+            <h2>3. Escolaridade e Família</h2>
+            <label>Escolaridade / Curso:</label><input type="text" name="Escolaridade">
+            <label>Nome da Mãe:</label><input type="text" name="Mae">
+            <label>Nome do Pai:</label><input type="text" name="Pai">
+            <label>Contato Emergência:</label><input type="text" name="Emergencia">
             <div class="btns">
-                <button type="button" class="prev" onclick="prevStep()">Voltar</button>
-                <button type="button" class="next" onclick="nextStep()">Próximo</button>
+                <button type="button" class="prev" onclick="mudar(1)">Voltar</button>
+                <button type="button" class="next" onclick="mudar(3)">Próximo</button>
             </div>
         </div>
 
         <div class="step">
-            <h2><i class="fas fa-notes-medical"></i> Ficha Médica</h2>
-            <label>Tipo Sanguíneo:</label>
-            <select name="Sangue"><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>O+</option><option>O-</option></select>
-            <label>Problemas de Saúde / Alergias:</label>
-            <textarea name="Alergias" rows="2" placeholder="Descreva aqui..."></textarea>
-            <label>Remédios Contínuos:</label>
-            <input type="text" name="Remedios">
+            <h2>4. Ficha Médica</h2>
+            <label>Nº Cartão SUS:</label><input type="text" name="SUS">
+            <label>Tipo Sanguíneo / Fator RH:</label><input type="text" name="Sangue_RH">
+            <label>Plano de Saúde:</label><input type="text" name="Plano">
+            <label>Doenças (Catapora, Dengue, etc.):</label><textarea name="Doencas_Ja_Teve" rows="2" placeholder="Liste as doenças que já teve"></textarea>
+            <label>Alergias / Remédios:</label><textarea name="Alergias_Remedios" rows="2"></textarea>
+            <label>Cirurgias / Outros Problemas:</label><input type="text" name="Cirurgias">
             <div class="btns">
-                <button type="button" class="prev" onclick="prevStep()">Voltar</button>
-                <button type="button" class="next" onclick="nextStep()">Próximo</button>
-            </div>
-        </div>
-
-        <div class="step">
-            <h2><i class="fas fa-check-double"></i> Tudo Pronto!</h2>
-            <p style="font-size: 13px; color: #ccc; margin-bottom: 20px; line-height: 1.6;">
-                Ao clicar no botão abaixo, os dados serão formatados e enviados para o WhatsApp oficial do Clube Sirius.
-            </p>
-            <div class="btns">
-                <button type="button" class="prev" onclick="prevStep()">Revisar</button>
-                <button type="button" class="send" onclick="sendWhatsApp()">Enviar para WhatsApp</button>
+                <button type="button" class="prev" onclick="mudar(2)">Voltar</button>
+                <button type="button" class="send" onclick="enviar()">Finalizar e Enviar</button>
             </div>
         </div>
 
@@ -142,43 +115,24 @@
 </div>
 
 <script>
-    let currentStep = 0;
-    const steps = document.querySelectorAll(".step");
-    const bar = document.getElementById("bar");
-
-    function nextStep() {
-        if (currentStep < steps.length - 1) {
-            steps[currentStep].classList.remove("active");
-            currentStep++;
-            steps[currentStep].classList.add("active");
-            updateProgress();
-        }
+    const steps = document.querySelectorAll('.step');
+    function mudar(idx) {
+        steps.forEach(s => s.classList.remove('active'));
+        steps[idx].classList.add('active');
+        window.scrollTo(0,0);
     }
 
-    function prevStep() {
-        if (currentStep > 0) {
-            steps[currentStep].classList.remove("active");
-            currentStep--;
-            steps[currentStep].classList.add("active");
-            updateProgress();
-        }
-    }
-
-    function updateProgress() {
-        let percent = ((currentStep + 1) / steps.length) * 100;
-        bar.style.width = percent + "%";
-    }
-
-    function sendWhatsApp() {
-        const form = document.getElementById("fSirius");
-        const formData = new FormData(form);
-        let msg = "*NOVO CADASTRO - CLUBE SIRIUS*%0A------------------------------%0A";
+    function enviar() {
+        const form = document.getElementById('formCompleto');
+        const data = new FormData(form);
+        let msg = "*NOVO CADASTRO CLUBE SIRIUS*%0A%0A";
         
-        formData.forEach((value, key) => {
-            if(value) msg += `*${key}:* ${value}%0A`;
+        data.forEach((val, key) => {
+            if(val) msg += `*${key}:* ${val}%0A`;
         });
 
-        const phone = "559291404115"; 
+        // Número do WhatsApp que você informou
+        const phone = "559291404115";
         window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
     }
 </script>
