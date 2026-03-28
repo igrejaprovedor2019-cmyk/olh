@@ -7,197 +7,139 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        /* CORES PREMIUM SIRIUS */
-        :root { 
-            --blue: #001c3d; 
-            --gold: #ffcc00; 
-            --dark-gold: #d4ac00;
-            --white: #ffffff;
-            --bg: #0b0e14;
-        }
-
+        :root { --blue: #001c3d; --gold: #ffcc00; --bg: #0b0e14; --card: #161b22; }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
-
-        body { 
-            background-color: var(--bg);
-            background-image: radial-gradient(circle at top right, #1a2a44, transparent);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            padding: 20px 0 40px 0;
-        }
-
-        /* CABEÇALHO COM A SUA LOGO */
-        .header { 
-            text-align: center; 
-            margin-bottom: 30px;
-        }
+        body { background-color: var(--bg); color: white; padding: 20px 0; }
         
-        .logo-container img {
-            max-width: 150px; /* Ajuste o tamanho da logo aqui */
-            height: auto;
-            filter: drop-shadow(0 0 10px rgba(255, 204, 0, 0.4));
-            margin-bottom: 10px;
-        }
-
-        .header h1 { 
-            color: var(--white);
-            font-size: 24px; 
-            letter-spacing: 5px; 
-            text-transform: uppercase;
-            font-weight: 800;
-        }
-
-        /* CONTAINER PRINCIPAL (ESTILO CARTÃO PREMIUM) */
-        .container { 
-            max-width: 500px; 
-            width: 92%;
-            margin: 0 auto; 
-            background: #161b22; 
-            border-radius: 20px; 
-            overflow: hidden; 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-
-        /* BARRA DE PROGRESSO */
-        .prog-container { background: #0d1117; height: 8px; }
-        .prog-fill { 
-            height: 100%; 
-            background: linear-gradient(90deg, var(--gold), #fff); 
-            width: 10%; 
-            transition: 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); 
-        }
-
-        form { padding: 35px 25px; }
+        .header { text-align: center; margin-bottom: 20px; }
+        .logo { width: 80px; margin-bottom: 10px; }
+        
+        .container { max-width: 500px; width: 95%; margin: 0 auto; background: var(--card); border-radius: 15px; overflow: hidden; border: 1px solid #30363d; }
+        .prog-bar { height: 6px; background: #0d1117; }
+        .prog-fill { height: 100%; background: var(--gold); width: 10%; transition: 0.4s; }
+        
+        form { padding: 25px; }
         .step { display: none; }
-        .step.active { display: block; animation: fadeIn 0.5s ease; }
+        .step.active { display: block; animation: fadeIn 0.4s; }
+        @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        h2 { 
-            font-size: 16px; 
-            color: var(--gold); 
-            margin-bottom: 25px; 
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-transform: uppercase;
-        }
-
-        /* INPUTS ESTILIZADOS */
-        .field { margin-bottom: 20px; }
-        label { 
-            display: block; 
-            font-size: 11px; 
-            font-weight: 600; 
-            color: #8b949e; 
-            text-transform: uppercase; 
-            margin-bottom: 8px;
-            letter-spacing: 1px;
-        }
-
-        input, select, textarea { 
-            width: 100%; 
-            padding: 15px; 
-            border: 1px solid #30363d; 
-            border-radius: 10px; 
-            font-size: 15px; 
-            background: #0d1117;
-            color: white;
-            transition: 0.3s;
-        }
-
-        input:focus, select:focus, textarea:focus { border-color: var(--gold); outline: none; background: #161b22; box-shadow: 0 0 10px rgba(255, 204, 0, 0.2); }
-
-        /* OPÇÕES DE MARCAR (CHECKBOX/RADIO) */
-        .opts { 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 12px; 
-            background: #0d1117; 
-            padding: 18px; 
-            border-radius: 10px;
-            border: 1px solid #30363d;
-        }
-
-        .opts label { 
-            display: flex; 
-            align-items: center; 
-            gap: 10px; 
-            font-weight: 400; 
-            text-transform: none; 
-            font-size: 14px; 
-            cursor: pointer;
-            margin: 0;
-            color: #c9d1d9;
-        }
-
-        .opts input[type="radio"], .opts input[type="checkbox"] { 
-            width: 18px; 
-            height: 18px; 
-            accent-color: var(--gold);
-        }
-
-        /* BOTÕES */
-        .btns { display: flex; gap: 12px; margin-top: 35px; }
-        button { 
-            flex: 1; 
-            padding: 18px; 
-            border: none; 
-            border-radius: 12px; 
-            font-weight: 600; 
-            cursor: pointer; 
-            text-transform: uppercase;
-            transition: 0.3s ease;
-            font-size: 14px;
-            letter-spacing: 1px;
-        }
-
-        .next { background: var(--blue); color: white; box-shadow: 0 5px 15px rgba(0,28,61,0.3); }
-        .next:hover { transform: translateY(-3px); background: #002d62; box-shadow: 0 8px 20px rgba(0,28,61,0.5); }
-
-        .prev { background: #30363d; color: #8b949e; }
-        .prev:hover { background: #3a4149; color: white; }
-
-        .send { 
-            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%); 
-            color: white; 
-            font-size: 16px;
-            box-shadow: 0 5px 15px rgba(39,174,96,0.3);
-        }
-        .send:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 20px rgba(39,174,96,0.5); }
-
-        /* MODAL WHATSAPP */
-        .modal { 
-            display: none; 
-            position: fixed; 
-            inset: 0; 
-            background: rgba(0,12,26,0.9); 
-            z-index: 100; 
-            align-items: center; 
-            justify-content: center; 
-            padding: 20px; 
-            backdrop-filter: blur(5px);
-        }
-
-        .m-box { 
-            background: #161b22; 
-            padding: 40px; 
-            border-radius: 25px; 
-            text-align: center; 
-            max-width: 400px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-            border: 1px solid rgba(255,204,0,0.2);
-        }
-
-        .m-box i { font-size: 60px; color: #25d366; margin-bottom: 25px; filter: drop-shadow(0 0 10px rgba(37, 211, 102, 0.4));}
-        .m-box h3 { margin-bottom: 15px; color: var(--gold); font-size: 20px; }
-        .m-box p { font-size: 14px; color: #8b949e; margin-bottom: 30px; line-height: 1.6; }
+        h2 { color: var(--gold); font-size: 18px; margin-bottom: 20px; border-bottom: 1px solid #30363d; padding-bottom: 10px; }
+        label { display: block; font-size: 12px; color: #8b949e; margin-bottom: 5px; text-transform: uppercase; }
+        input, select, textarea { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #30363d; border-radius: 8px; background: #0d1117; color: white; }
+        
+        .btns { display: flex; gap: 10px; margin-top: 20px; }
+        button { flex: 1; padding: 15px; border-radius: 8px; border: none; font-weight: bold; cursor: pointer; text-transform: uppercase; }
+        .next { background: var(--blue); color: white; }
+        .prev { background: #30363d; color: #ccc; }
+        .send { background: #25d366; color: white; }
     </style>
 </head>
 <body>
 
 <div class="header">
-    <div class="logo-container">
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeAAAAKACAYAAAEc6S6nAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAP+lSURBVHhe7J0HoFxlmf5/bU6fnZ5kMikkIYSESCEJJZSAoAhYQEVFsUfW/ndVwXWRta2uvVfXVUVX74pdUfau7qq4FpAFxUoSIPSEkJ7JJDP9tnP79//nO+/MmZkzM5kkE/LmR+adO+/ce/vep3znwF9+OBAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRA
+    <img src="https://i.ibb.co/NdMBHN3N/Airbrush-IMAGE-ENHANCER-1772282903019-1772282903019-1.jpg" class="logo" alt="Logo">
+    <h1>SIRIUS</h1>
+</div>
+
+<div class="container">
+    <div class="prog-bar"><div class="prog-fill" id="bar"></div></div>
+    <form id="fSirius">
+        <div class="step active">
+            <h2><i class="fas fa-user"></i> Dados Pessoais (1/10)</h2>
+            <label>Nome Completo:</label><input type="text" name="Nome" required>
+            <label>Função:</label><input type="text" name="Funcao">
+            <label>Nascimento:</label><input type="date" name="Nascimento">
+            <div class="btns"><button type="button" class="next" onclick="nextStep()">Próximo</button></div>
+        </div>
+
+        <div class="step">
+            <h2><i class="fas fa-file-contract"></i> Documentos (2/10)</h2>
+            <label>RG:</label><input type="text" name="RG">
+            <label>CPF:</label><input type="text" name="CPF">
+            <label>Título Eleitor:</label><input type="text" name="Titulo">
+            <div class="btns">
+                <button type="button" class="prev" onclick="prevStep()">Voltar</button>
+                <button type="button" class="next" onclick="nextStep()">Próximo</button>
+            </div>
+        </div>
+
+        <div class="step">
+            <h2><i class="fas fa-map-marker-alt"></i> Endereço (3/10)</h2>
+            <label>Rua/Nº:</label><input type="text" name="Endereco">
+            <label>Bairro:</label><input type="text" name="Bairro">
+            <label>CEP:</label><input type="text" name="CEP">
+            <div class="btns">
+                <button type="button" class="prev" onclick="prevStep()">Voltar</button>
+                <button type="button" class="next" onclick="nextStep()">Próximo</button>
+            </div>
+        </div>
+
+        <div class="step">
+            <h2><i class="fas fa-heartbeat"></i> Ficha Médica (4/10)</h2>
+            <label>Tipo Sanguíneo:</label>
+            <select name="Sangue">
+                <option value="A+">A+</option><option value="A-">A-</option>
+                <option value="B+">B+</option><option value="B-">B-</option>
+                <option value="AB+">AB+</option><option value="O+">O+</option>
+            </select>
+            <label>Possui Alergia? (Qual?):</label><input type="text" name="Alergia" placeholder="Se não, deixe em branco">
+            <label>Problemas Cardíacos?</label><input type="text" name="Coracao">
+            <div class="btns">
+                <button type="button" class="prev" onclick="prevStep()">Voltar</button>
+                <button type="button" class="next" onclick="nextStep()">Próximo</button>
+            </div>
+        </div>
+
+        <div class="step" id="lastStep">
+            <h2><i class="fas fa-check-circle"></i> Concluir (10/10)</h2>
+            <p style="font-size: 13px; color: #8b949e; margin-bottom: 20px;">Ao clicar abaixo, seus dados serão enviados para o WhatsApp do Clube.</p>
+            <div class="btns">
+                <button type="button" class="prev" onclick="prevStep()">Voltar</button>
+                <button type="button" class="send" onclick="sendWhatsApp()">FINALIZAR</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    let currentStep = 0;
+    const steps = document.querySelectorAll(".step");
+    const bar = document.getElementById("bar");
+
+    function nextStep() {
+        steps[currentStep].classList.remove("active");
+        currentStep++;
+        if(currentStep >= steps.length) currentStep = steps.length - 1;
+        steps[currentStep].classList.add("active");
+        updateBar();
+    }
+
+    function prevStep() {
+        steps[currentStep].classList.remove("active");
+        currentStep--;
+        if(currentStep < 0) currentStep = 0;
+        steps[currentStep].classList.add("active");
+        updateBar();
+    }
+
+    function updateBar() {
+        let percent = ((currentStep + 1) / steps.length) * 100;
+        bar.style.width = percent + "%";
+    }
+
+    function sendWhatsApp() {
+        const form = document.getElementById("fSirius");
+        const formData = new FormData(form);
+        let message = "*NOVA FICHA - CLUBE SIRIUS*%0A%0A";
+        
+        for (let [key, value] of formData.entries()) {
+            message += `*${key}:* ${value}%0A`;
+        }
+
+        const phone = "559291404115";
+        window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+    }
+</script>
+
+</body>
+</html>
