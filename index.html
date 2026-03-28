@@ -5,77 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIRIUS - FORMULÁRIO OFICIAL</title>
     <style>
-        /* O FUNDO QUE VOCÊ AMOU EM TELA CHEIA */
         body { 
             margin: 0; padding: 0;
             background: #000 url('https://i.ibb.co/NdMBHN3N/Airbrush-IMAGE-ENHANCER-1772282903019-1772282903019-1.jpg') no-repeat center center fixed;
             background-size: cover;
-            color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white; font-family: 'Segoe UI', sans-serif;
             min-height: 100vh; display: flex; flex-direction: column; align-items: center;
         }
 
-        /* MÁSCARA ESCURA PARA AS PERGUNTAS FICAREM BEM VISÍVEIS */
         body::before {
             content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 5, 15, 0.88); z-index: 1;
+            background: rgba(0, 5, 15, 0.9); z-index: 1;
         }
 
-        .main-content { position: relative; z-index: 2; width: 95%; max-width: 600px; padding: 20px 0; }
+        .main-content { position: relative; z-index: 2; width: 95%; max-width: 650px; padding: 20px; }
         
-        /* CABEÇALHO: LOGO REDONDA COM BRILHO */
-        .header { text-align: center; margin-bottom: 25px; margin-top: 10px; }
-        .logo-topo { 
-            width: 140px; height: 140px; border-radius: 50%; 
-            border: 3px solid #ffcc00; box-shadow: 0 0 25px rgba(255, 204, 0, 0.5); 
-            object-fit: cover; background: #001c3d; 
-        }
+        .header { text-align: center; margin-bottom: 25px; }
+        .logo-topo { width: 140px; height: 140px; border-radius: 50%; border: 3px solid #ffcc00; box-shadow: 0 0 20px #ffcc00; object-fit: cover; }
 
-        /* ABAS ORGANIZADAS */
         .tabs { display: flex; gap: 5px; }
-        .tab { 
-            flex: 1; padding: 16px; background: rgba(20, 20, 20, 0.9); text-align: center; 
-            cursor: pointer; font-weight: bold; border-radius: 12px 12px 0 0; 
-            border: 1px solid #333; color: #777; font-size: 13px;
-        }
+        .tab { flex: 1; padding: 15px; background: #111; text-align: center; cursor: pointer; border-radius: 10px 10px 0 0; border: 1px solid #333; color: #777; font-weight: bold; }
         .tab.active { background: #ffcc00; color: #000; border-color: #ffcc00; }
 
         .container { 
-            background: rgba(5, 10, 20, 0.97); padding: 25px; border-radius: 0 0 15px 15px; 
-            border: 1px solid #ffcc00; border-top: none; box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            background: rgba(5, 10, 20, 0.98); padding: 25px; border-radius: 0 0 15px 15px; 
+            border: 1px solid #ffcc00; border-top: none;
         }
 
         .section { display: none; }
-        .section.active { display: block; animation: fadeIn 0.4s ease; }
-        @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+        .section.active { display: block; }
 
-        /* TÍTULOS E CAMPOS */
-        h2 { color: #ffcc00; font-size: 13px; text-transform: uppercase; border-left: 3px solid #ffcc00; padding-left: 10px; margin: 30px 0 15px; }
-        .field { margin-bottom: 18px; }
-        label { display: block; margin-bottom: 6px; font-size: 11px; font-weight: bold; color: #aaa; text-transform: uppercase; }
+        h2 { color: #ffcc00; font-size: 14px; text-transform: uppercase; margin: 30px 0 15px; border-left: 4px solid #ffcc00; padding-left: 10px; background: rgba(255,204,0,0.1); padding-top: 5px; padding-bottom: 5px; }
+        
+        .field { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-size: 11px; color: #bbb; font-weight: bold; text-transform: uppercase; }
         
         input, select, textarea { 
-            width: 100%; padding: 13px; border-radius: 8px; border: 1px solid #333; 
-            background: rgba(0,0,0,0.6); color: white; box-sizing: border-box; font-size: 15px; outline: none;
+            width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #333; 
+            background: #000; color: white; box-sizing: border-box; font-size: 15px;
         }
-        input:focus { border-color: #ffcc00; background: #050505; }
 
-        .row { display: flex; gap: 12px; }
-        .row .field { flex: 1; }
+        .row { display: flex; gap: 10px; margin-bottom: 10px; }
+        .row .field { flex: 1; margin-bottom: 0; }
 
-        /* BOTÃO DO WHATSAPP */
         .final-btn { 
             width: 100%; padding: 20px; background: #25d366; color: white; 
-            border: none; border-radius: 12px; font-size: 18px; font-weight: bold; 
-            cursor: pointer; margin-top: 35px; text-transform: uppercase; transition: 0.3s;
+            border: none; border-radius: 10px; font-size: 18px; font-weight: bold; 
+            cursor: pointer; margin-top: 30px; text-transform: uppercase;
         }
-        .final-btn:hover { background: #1eb954; transform: scale(1.02); }
 
-        .grid-doencas { 
-            display: grid; grid-template-columns: 1fr 1fr; gap: 10px; 
-            background: rgba(255,255,255,0.03); padding: 15px; border-radius: 10px; 
-        }
-        .check-item { font-size: 13px; display: flex; align-items: center; gap: 8px; color: #ddd; }
-        .check-item input { width: auto; margin: 0; }
+        .grid-doencas { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; background: #0a0a0a; padding: 15px; border-radius: 10px; border: 1px solid #222; }
+        .check-item { font-size: 13px; display: flex; align-items: center; gap: 8px; color: #ccc; }
+        .check-item input { width: auto; }
     </style>
 </head>
 <body>
@@ -86,89 +67,103 @@
     </div>
 
     <div class="tabs">
-        <div class="tab active" onclick="mudar(0)">📝 INSCRIÇÃO</div>
-        <div class="tab" onclick="mudar(1)">🩺 FICHA MÉDICA</div>
+        <div class="tab active" onclick="mudar(0)">INSCRIÇÃO</div>
+        <div class="tab" onclick="mudar(1)">FICHA MÉDICA</div>
     </div>
 
     <div class="container">
         <form id="formSirius">
             
             <div class="section active" id="s0">
-                <h2>👤 Dados do Membro</h2>
+                <h2>👤 Identificação Completa</h2>
                 <div class="field">
                     <label>Nome Completo:</label>
-                    <input type="text" name="Nome_Membro" required>
+                    <input type="text" name="Nome" required>
                 </div>
 
                 <div class="row">
-                    <div class="field">
-                        <label>Data de Nascimento:</label>
-                        <input type="date" name="Nascimento">
-                    </div>
-                    <div class="field">
-                        <label>Tamanho Camiseta:</label>
-                        <input type="text" name="Camiseta" placeholder="Ex: P, M, 14">
-                    </div>
+                    <div class="field"><label>Função:</label><input type="text" name="Funcao"></div>
+                    <div class="field"><label>Nascimento:</label><input type="date" name="Nascimento"></div>
                 </div>
 
+                <div class="row">
+                    <div class="field"><label>Sexo:</label><select name="Sexo"><option>Feminino</option><option>Masculino</option></select></div>
+                    <div class="field"><label>Estado Civil:</label><input type="text" name="EstadoCivil"></div>
+                    <div class="field"><label>Tam. Camiseta:</label><input type="text" name="Camiseta"></div>
+                </div>
+
+                <h2>🆔 Documentação</h2>
+                <div class="row">
+                    <div class="field"><label>RG:</label><input type="text" name="RG"></div>
+                    <div class="field"><label>CPF:</label><input type="text" name="CPF"></div>
+                </div>
+                
                 <div class="field">
-                    <label>Certidão de Nascimento (Termo/Folha/Livro):</label>
+                    <label>Nº Certidão de Nascimento (Termo/Folha/Livro):</label>
                     <input type="text" name="Certidao_Nasc">
                 </div>
 
-                <h2>👨‍👩‍👧 Responsáveis</h2>
                 <div class="field">
-                    <label>Nome do Pai:</label>
-                    <input type="text" name="Nome_Pai">
-                </div>
-                <div class="field">
-                    <label>Nome da Mãe:</label>
-                    <input type="text" name="Nome_Mae">
+                    <label>Já é Batizado na IASD?</label>
+                    <select name="Batizado"><option>Não</option><option>Sim</option></select>
                 </div>
 
+                <h2>🏠 Endereço e Contato</h2>
+                <div class="field"><label>Rua e Número:</label><input type="text" name="RuaNum"></div>
                 <div class="row">
-                    <div class="field">
-                        <label>WhatsApp Contato:</label>
-                        <input type="tel" name="WhatsApp_Resp" placeholder="(92) 9XXXX-XXXX">
-                    </div>
-                    <div class="field">
-                        <label>E-mail:</label>
-                        <input type="email" name="Email_Resp">
-                    </div>
+                    <div class="field"><label>Bairro:</label><input type="text" name="Bairro"></div>
+                    <div class="field"><label>Cidade:</label><input type="text" name="Cidade"></div>
+                    <div class="field"><label>CEP:</label><input type="text" name="CEP"></div>
+                </div>
+                <div class="row">
+                    <div class="field"><label>Celular:</label><input type="tel" name="Celular"></div>
+                    <div class="field"><label>E-mail:</label><input type="email" name="Email"></div>
                 </div>
 
-                <h2>🏠 Endereço</h2>
-                <div class="field">
-                    <label>Endereço Residencial (Rua, Nº, Bairro):</label>
-                    <input type="text" name="Endereco_Completo">
+                <h2>👨‍👩‍👧 Responsáveis</h2>
+                <div class="field"><label>Nome do Pai:</label><input type="text" name="Pai"></div>
+                <div class="row">
+                    <div class="field"><label>Celular Pai:</label><input type="tel" name="Tel_Pai"></div>
+                    <div class="field"><label>Email Pai:</label><input type="email" name="Email_Pai"></div>
+                </div>
+
+                <div class="field"><label>Nome da Mãe:</label><input type="text" name="Mae"></div>
+                <div class="row">
+                    <div class="field"><label>Celular Mãe:</label><input type="tel" name="Tel_Mae"></div>
+                    <div class="field"><label>Email Mãe:</label><input type="email" name="Email_Mae"></div>
+                </div>
+
+                <h2>🚨 Emergência e Profissão</h2>
+                <div class="field"><label>Avisar quem? (Nome/Parentesco/Tel):</label><textarea name="Emergencia" rows="2"></textarea></div>
+                <div class="row">
+                    <div class="field"><label>Escolaridade:</label><input type="text" name="Escola"></div>
+                    <div class="field"><label>Profissão Saúde?</label><input type="text" name="ProfSaude" placeholder="Se sim, qual?"></div>
                 </div>
             </div>
 
             <div class="section" id="s1">
-                <h2>🩺 Saúde e Histórico</h2>
+                <h2>🩺 Ficha Médica</h2>
                 <div class="row">
-                    <div class="field">
-                        <label>Nº Cartão SUS:</label>
-                        <input type="text" name="Cartao_SUS">
-                    </div>
-                    <div class="field">
-                        <label>Tipo Sanguíneo:</label>
-                        <input type="text" name="Tipo_Sangue" placeholder="Ex: AB+">
-                    </div>
+                    <div class="field"><label>Cartão SUS:</label><input type="text" name="SUS"></div>
+                    <div class="field"><label>Tipo Sanguíneo:</label><input type="text" name="Sangue"></div>
                 </div>
+                <div class="field"><label>Plano de Saúde:</label><input type="text" name="Plano"></div>
 
-                <label style="margin-top:10px; display:block;">Já teve ou possui:</label>
+                <label>Doenças que já teve:</label>
                 <div class="grid-doencas">
                     <label class="check-item"><input type="checkbox" name="d" value="Catapora"> Catapora</label>
+                    <label class="check-item"><input type="checkbox" name="d" value="Dengue"> Dengue</label>
+                    <label class="check-item"><input type="checkbox" name="d" value="Malaria"> Malária</label>
+                    <label class="check-item"><input type="checkbox" name="d" value="Covid"> Covid</label>
+                    <label class="check-item"><input type="checkbox" name="d" value="Pneumonia"> Pneumonia</label>
                     <label class="check-item"><input type="checkbox" name="d" value="Asma"> Asma</label>
-                    <label class="check-item"><input type="checkbox" name="d" value="Diabetes"> Diabetes</label>
-                    <label class="check-item"><input type="checkbox" name="d" value="Alergia"> Alergia</label>
                 </div>
 
-                <div class="field" style="margin-top:20px;">
-                    <label>Alergias/Remédios ou Observações:</label>
-                    <textarea name="Obs_Saude" rows="4" placeholder="Descreva aqui detalhes importantes..."></textarea>
-                </div>
+                <h2>⚠️ Alergias e Cuidados</h2>
+                <div class="field"><label>Alergias (Remédio/Alimento/Pele):</label><textarea name="Alergias" rows="2"></textarea></div>
+                <div class="field"><label>Problemas Cardíacos/Renais/Diabetes:</label><textarea name="Problemas" rows="2"></textarea></div>
+                <div class="field"><label>Medicamentos em Uso:</label><textarea name="Remedios" rows="2"></textarea></div>
+                <div class="field"><label>Condição Especial (TEA, PCD, etc):</label><input type="text" name="Especial"></div>
             </div>
 
             <button type="button" class="final-btn" onclick="enviar()">Finalizar e Enviar via WhatsApp</button>
@@ -188,18 +183,17 @@
     function enviar() {
         const form = document.getElementById('formSirius');
         const data = new FormData(form);
-        let msg = "*NOVO CADASTRO CLUBE SIRIUS*%0A------------------------------%0A";
+        let msg = "*CADASTRO COMPLETO SIRIUS*%0A%0A";
         
         let doencas = [];
         document.querySelectorAll('input[name="d"]:checked').forEach(i => doencas.push(i.value));
 
         for (let [key, val] of data.entries()) {
             if(val && key !== 'd') {
-                msg += `*${key.replace('_', ' ')}:* ${val}%0A`;
+                msg += `*${key}:* ${val}%0A`;
             }
         }
-        
-        if(doencas.length > 0) msg += `%0A*HISTÓRICO SAÚDE:* ${doencas.join(", ")}`;
+        if(doencas.length > 0) msg += `%0A*DOENÇAS:* ${doencas.join(", ")}`;
 
         const phone = "559291404115";
         window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
