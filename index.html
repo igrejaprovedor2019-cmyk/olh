@@ -3,30 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIRIUS - FICHA OFICIAL</title>
+    <title>SIRIUS - FICHA COMPLETA</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root { --blue: #001c3d; --gold: #ffcc00; --bg: #0b0e14; --card: #161b22; }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
         body { background-color: var(--bg); color: white; padding: 20px 0; }
-        
         .header { text-align: center; margin-bottom: 20px; }
-        .logo { width: 80px; margin-bottom: 10px; }
-        
-        .container { max-width: 500px; width: 95%; margin: 0 auto; background: var(--card); border-radius: 15px; overflow: hidden; border: 1px solid #30363d; }
-        .prog-bar { height: 6px; background: #0d1117; }
+        .logo { width: 100px; margin-bottom: 10px; border-radius: 50%; }
+        .container { max-width: 600px; width: 95%; margin: 0 auto; background: var(--card); border-radius: 15px; overflow: hidden; border: 1px solid #30363d; }
+        .prog-bar { height: 8px; background: #0d1117; }
         .prog-fill { height: 100%; background: var(--gold); width: 10%; transition: 0.4s; }
-        
         form { padding: 25px; }
         .step { display: none; }
         .step.active { display: block; animation: fadeIn 0.4s; }
         @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
-
-        h2 { color: var(--gold); font-size: 18px; margin-bottom: 20px; border-bottom: 1px solid #30363d; padding-bottom: 10px; }
-        label { display: block; font-size: 12px; color: #8b949e; margin-bottom: 5px; text-transform: uppercase; }
+        h2 { color: var(--gold); font-size: 18px; margin-bottom: 20px; border-bottom: 1px solid #30363d; padding-bottom: 10px; text-transform: uppercase; }
+        h3 { font-size: 14px; color: #fff; margin: 15px 0 10px 0; border-left: 3px solid var(--gold); padding-left: 10px; }
+        label { display: block; font-size: 11px; color: #8b949e; margin-bottom: 5px; text-transform: uppercase; }
         input, select, textarea { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #30363d; border-radius: 8px; background: #0d1117; color: white; }
-        
+        .grid-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; background: #0d1117; padding: 10px; border-radius: 8px; }
+        .check-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #c9d1d9; }
+        .check-item input { width: auto; margin: 0; }
         .btns { display: flex; gap: 10px; margin-top: 20px; }
         button { flex: 1; padding: 15px; border-radius: 8px; border: none; font-weight: bold; cursor: pointer; text-transform: uppercase; }
         .next { background: var(--blue); color: white; }
@@ -37,26 +36,37 @@
 <body>
 
 <div class="header">
-    <img src="https://i.ibb.co/NdMBHN3N/Airbrush-IMAGE-ENHANCER-1772282903019-1772282903019-1.jpg" class="logo" alt="Logo">
-    <h1>SIRIUS</h1>
+    <img src="https://i.ibb.co/NdMBHN3N/Airbrush-IMAGE-ENHANCER-1772282903019-1772282903019-1.jpg" class="logo">
+    <h1>CLUBE SIRIUS</h1>
 </div>
 
 <div class="container">
     <div class="prog-bar"><div class="prog-fill" id="bar"></div></div>
     <form id="fSirius">
+        
         <div class="step active">
-            <h2><i class="fas fa-user"></i> Dados Pessoais (1/10)</h2>
+            <h2>1. Identificação</h2>
             <label>Nome Completo:</label><input type="text" name="Nome" required>
             <label>Função:</label><input type="text" name="Funcao">
-            <label>Nascimento:</label><input type="date" name="Nascimento">
+            <div class="grid-opts">
+                <label class="check-item"><input type="radio" name="Sexo" value="M"> Masc.</label>
+                <label class="check-item"><input type="radio" name="Sexo" value="F"> Fem.</label>
+            </div>
+            <label>Data de Nascimento:</label><input type="date" name="Nascimento">
+            <label>Estado Civil:</label><input type="text" name="EstadoCivil">
             <div class="btns"><button type="button" class="next" onclick="nextStep()">Próximo</button></div>
         </div>
 
         <div class="step">
-            <h2><i class="fas fa-file-contract"></i> Documentos (2/10)</h2>
-            <label>RG:</label><input type="text" name="RG">
-            <label>CPF:</label><input type="text" name="CPF">
-            <label>Título Eleitor:</label><input type="text" name="Titulo">
+            <h2>2. Contatos e Igreja</h2>
+            <label>Telefone:</label><input type="tel" name="Telefone">
+            <label>Celular:</label><input type="tel" name="Celular">
+            <label>E-mail:</label><input type="email" name="Email">
+            <label>Batizado (IASD)?</label>
+            <div class="grid-opts">
+                <label class="check-item"><input type="radio" name="Batizado" value="Sim"> Sim</label>
+                <label class="check-item"><input type="radio" name="Batizado" value="Não"> Não</label>
+            </div>
             <div class="btns">
                 <button type="button" class="prev" onclick="prevStep()">Voltar</button>
                 <button type="button" class="next" onclick="nextStep()">Próximo</button>
@@ -64,9 +74,25 @@
         </div>
 
         <div class="step">
-            <h2><i class="fas fa-map-marker-alt"></i> Endereço (3/10)</h2>
-            <label>Rua/Nº:</label><input type="text" name="Endereco">
+            <h2>3. Documentos</h2>
+            <label>RG:</label><input type="text" name="RG">
+            <label>Órgão Expedidor:</label><input type="text" name="OrgExp">
+            <label>CPF:</label><input type="text" name="CPF">
+            <label>Tamanho da Camiseta:</label>
+            <select name="Camiseta">
+                <option>PP</option><option>P</option><option>M</option><option>G</option><option>GG</option><option>EXG</option>
+            </select>
+            <div class="btns">
+                <button type="button" class="prev" onclick="prevStep()">Voltar</button>
+                <button type="button" class="next" onclick="nextStep()">Próximo</button>
+            </div>
+        </div>
+
+        <div class="step">
+            <h2>4. Endereço</h2>
+            <label>Rua e Número:</label><input type="text" name="Endereco">
             <label>Bairro:</label><input type="text" name="Bairro">
+            <label>Cidade:</label><input type="text" name="Cidade">
             <label>CEP:</label><input type="text" name="CEP">
             <div class="btns">
                 <button type="button" class="prev" onclick="prevStep()">Voltar</button>
@@ -75,29 +101,90 @@
         </div>
 
         <div class="step">
-            <h2><i class="fas fa-heartbeat"></i> Ficha Médica (4/10)</h2>
-            <label>Tipo Sanguíneo:</label>
-            <select name="Sangue">
-                <option value="A+">A+</option><option value="A-">A-</option>
-                <option value="B+">B+</option><option value="B-">B-</option>
-                <option value="AB+">AB+</option><option value="O+">O+</option>
+            <h2>5. Escolaridade</h2>
+            <label>Nível:</label>
+            <select name="EscolaridadeNivel">
+                <option>Fundamental</option><option>Médio</option><option>Superior</option><option>Pós/Mestrado</option>
             </select>
-            <label>Possui Alergia? (Qual?):</label><input type="text" name="Alergia" placeholder="Se não, deixe em branco">
-            <label>Problemas Cardíacos?</label><input type="text" name="Coracao">
+            <label>Status:</label>
+            <div class="grid-opts">
+                <label class="check-item"><input type="radio" name="EscolaStatus" value="Cursando"> Cursando</label>
+                <label class="check-item"><input type="radio" name="EscolaStatus" value="Completo"> Completo</label>
+            </div>
+            <label>Nome do Curso / Escola:</label><input type="text" name="NomeCurso">
             <div class="btns">
                 <button type="button" class="prev" onclick="prevStep()">Voltar</button>
                 <button type="button" class="next" onclick="nextStep()">Próximo</button>
             </div>
         </div>
 
-        <div class="step" id="lastStep">
-            <h2><i class="fas fa-check-circle"></i> Concluir (10/10)</h2>
-            <p style="font-size: 13px; color: #8b949e; margin-bottom: 20px;">Ao clicar abaixo, seus dados serão enviados para o WhatsApp do Clube.</p>
+        <div class="step">
+            <h2>6. Filiação (Pais)</h2>
+            <label>Nome do Pai:</label><input type="text" name="NomePai">
+            <label>Tel do Pai:</label><input type="tel" name="TelPai">
+            <label>Nome da Mãe:</label><input type="text" name="NomeMae">
+            <label>Tel da Mãe:</label><input type="tel" name="TelMae">
             <div class="btns">
                 <button type="button" class="prev" onclick="prevStep()">Voltar</button>
-                <button type="button" class="send" onclick="sendWhatsApp()">FINALIZAR</button>
+                <button type="button" class="next" onclick="nextStep()">Próximo</button>
             </div>
         </div>
+
+        <div class="step">
+            <h2>7. Emergência</h2>
+            <label>Nome de Contato:</label><input type="text" name="EmergenciaNome">
+            <label>Parentesco:</label><input type="text" name="EmergenciaGrau">
+            <label>Telefone de Emergência:</label><input type="tel" name="EmergenciaTel">
+            <div class="btns">
+                <button type="button" class="prev" onclick="prevStep()">Voltar</button>
+                <button type="button" class="next" onclick="nextStep()">Próximo</button>
+            </div>
+        </div>
+
+        <div class="step">
+            <h2>8. Ficha Médica I</h2>
+            <label>Nº Cartão SUS:</label><input type="text" name="SUS">
+            <label>Tipo Sanguíneo:</label>
+            <select name="Sangue">
+                <option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option><option>O+</option><option>O-</option>
+            </select>
+            <label>Plano de Saúde (Se tiver):</label><input type="text" name="PlanoSaude">
+            <div class="btns">
+                <button type="button" class="prev" onclick="prevStep()">Voltar</button>
+                <button type="button" class="next" onclick="nextStep()">Próximo</button>
+            </div>
+        </div>
+
+        <div class="step">
+            <h2>9. Histórico de Doenças</h2>
+            <p style="font-size:10px; margin-bottom:10px">Marque as doenças que já teve:</p>
+            <div class="grid-opts">
+                <label class="check-item"><input type="checkbox" name="Doenca" value="Catapora"> Catapora</label>
+                <label class="check-item"><input type="checkbox" name="Doenca" value="Dengue"> Dengue</label>
+                <label class="check-item"><input type="checkbox" name="Doenca" value="Meningite"> Meningite</label>
+                <label class="check-item"><input type="checkbox" name="Doenca" value="Asma"> Asma</label>
+                <label class="check-item"><input type="checkbox" name="Doenca" value="Diabetes"> Diabetes</label>
+                <label class="check-item"><input type="checkbox" name="Doenca" value="Alergia"> Alergia</label>
+            </div>
+            <label>Outras observações médicas:</label>
+            <textarea name="ObsMedica" rows="3"></textarea>
+            <div class="btns">
+                <button type="button" class="prev" onclick="prevStep()">Voltar</button>
+                <button type="button" class="next" onclick="nextStep()">Próximo</button>
+            </div>
+        </div>
+
+        <div class="step">
+            <h2>10. Finalizar</h2>
+            <p style="font-size: 12px; line-height: 1.5; color: #8b949e; margin-bottom: 20px;">
+                "Me responsabilizo por todas as informações desta Ficha de Cadastro e Ficha Médica, e garanto como fiel e verdadeiro."
+            </p>
+            <div class="btns">
+                <button type="button" class="prev" onclick="prevStep()">Voltar</button>
+                <button type="button" class="send" onclick="sendWhatsApp()">ENVIAR VIA WHATSAPP</button>
+            </div>
+        </div>
+
     </form>
 </div>
 
@@ -109,17 +196,17 @@
     function nextStep() {
         steps[currentStep].classList.remove("active");
         currentStep++;
-        if(currentStep >= steps.length) currentStep = steps.length - 1;
         steps[currentStep].classList.add("active");
         updateBar();
+        window.scrollTo(0,0);
     }
 
     function prevStep() {
         steps[currentStep].classList.remove("active");
         currentStep--;
-        if(currentStep < 0) currentStep = 0;
         steps[currentStep].classList.add("active");
         updateBar();
+        window.scrollTo(0,0);
     }
 
     function updateBar() {
@@ -130,10 +217,17 @@
     function sendWhatsApp() {
         const form = document.getElementById("fSirius");
         const formData = new FormData(form);
-        let message = "*NOVA FICHA - CLUBE SIRIUS*%0A%0A";
+        let message = "*SIRIUS - NOVA FICHA DE CADASTRO*%0A%0A";
         
-        for (let [key, value] of formData.entries()) {
-            message += `*${key}:* ${value}%0A`;
+        const data = {};
+        formData.forEach((value, key) => {
+            if(!data[key]) { data[key] = value; return; }
+            if(!Array.isArray(data[key])) { data[key] = [data[key]]; }
+            data[key].push(value);
+        });
+
+        for (let key in data) {
+            message += `*${key}:* ${data[key]}%0A`;
         }
 
         const phone = "559291404115";
