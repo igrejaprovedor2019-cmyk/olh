@@ -2,147 +2,259 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Ficha Oficial SIRIUS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha de Cadastro Oficial - Sirius</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root { --blue: #001c3d; --gold: #ffcc00; }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
-        body { background-color: #f0f2f5; padding-bottom: 30px; }
-        
+        body { background: #f0f2f5; padding-bottom: 50px; }
         .header { background: var(--blue); color: white; padding: 30px; text-align: center; border-bottom: 5px solid var(--gold); }
-        .header i { font-size: 50px; color: var(--gold); margin-bottom: 10px; }
-        .header h1 { font-size: 18px; letter-spacing: 2px; }
-
-        .container { max-width: 500px; margin: -20px auto 0; background: white; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); overflow: hidden; }
-        
-        .progress-container { padding: 20px 20px 0; }
-        .progress-bar { background: #eee; height: 10px; border-radius: 5px; overflow: hidden; }
-        .progress-fill { background: var(--blue); height: 100%; width: 10%; transition: 0.4s; }
-        .step-text { text-align: center; font-size: 12px; margin-top: 8px; font-weight: bold; color: #666; }
-
-        form { padding: 20px; }
+        .container { max-width: 550px; margin: -20px auto 0; background: white; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.2); overflow: hidden; }
+        .progress-bar { height: 10px; background: #eee; }
+        .progress-fill { height: 100%; background: var(--blue); width: 10%; transition: 0.4s; }
+        form { padding: 25px; }
         .form-step { display: none; }
-        .form-step.active { display: block; animation: fadeIn 0.3s; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-        h2 { font-size: 15px; color: var(--blue); border-left: 4px solid var(--gold); padding-left: 10px; margin-bottom: 15px; text-transform: uppercase; }
+        .form-step.active { display: block; }
+        h2 { font-size: 16px; color: var(--blue); border-left: 5px solid var(--gold); padding-left: 10px; margin: 20px 0 15px; text-transform: uppercase; }
         .input-group { margin-bottom: 12px; }
         label { display: block; font-size: 11px; font-weight: bold; margin-bottom: 4px; color: #444; }
-        input, select, textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 14px; outline: none; }
-        input:focus { border-color: var(--blue); }
-
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .checkbox-group { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; background: #f9f9f9; padding: 12px; border-radius: 8px; }
-        .checkbox-group label { display: flex; align-items: center; gap: 8px; font-weight: normal; font-size: 12px; }
-        .checkbox-group input { width: auto; }
-
+        input, select, textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 14px; }
+        .grid-check { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; background: #f9f9f9; padding: 10px; border-radius: 8px; margin-bottom: 15px; }
+        .grid-check label { display: flex; align-items: center; gap: 8px; font-weight: normal; font-size: 12px; text-transform: none; }
+        .grid-check input { width: auto; }
         .btn-group { display: flex; gap: 10px; margin-top: 25px; }
-        button { flex: 1; padding: 16px; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; text-transform: uppercase; }
+        button { flex: 1; padding: 18px; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; text-transform: uppercase; }
         .btn-next { background: var(--blue); color: white; }
-        .btn-prev { background: #ddd; color: #333; }
-        .btn-submit { background: #27ae60; color: white; font-size: 16px; }
-
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
-        .modal-content { background: white; padding: 30px; border-radius: 20px; text-align: center; }
-        #btn-confirm { background: #25d366; color: white; width: 100%; margin-top: 20px; }
+        .btn-prev { background: #ddd; }
+        .btn-submit { background: #27ae60; color: white; }
+        .modal { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:1000; align-items:center; justify-content:center; }
+        .modal-content { background:white; padding:30px; border-radius:20px; text-align:center; max-width:90%; }
     </style>
 </head>
 <body>
 
 <div class="header">
-    <i class="fas fa-star"></i>
-    <h1>FICHA DE CADASTRO SIRIUS</h1>
+    <i class="fas fa-star" style="font-size:40px; color:var(--gold);"></i>
+    <h1>CLUBE DE DESBRAVADORES SIRIUS</h1>
 </div>
 
 <div class="container">
-    <div class="progress-container">
-        <div class="progress-bar"><div class="progress-fill" id="fill"></div></div>
-        <div class="step-text">Etapa <span id="stepNow">1</span> de 10</div>
-    </div>
-
-    <form id="siriusForm">
+    <div class="progress-bar"><div class="progress-fill" id="fill"></div></div>
+    <form id="formSirius">
+        
         <div class="form-step active">
-            <h2>👤 Identificação Inicial</h2>
+            <h2>Ficha de Cadastro - Pág 1</h2>
             <div class="input-group"><label>Nome Completo:</label><input type="text" name="Nome Completo" required></div>
-            <div class="grid-2">
-                <div class="input-group"><label>Função:</label><input type="text" name="Função"></div>
-                <div class="input-group"><label>Sexo:</label><select name="Sexo"><option>Feminino</option><option>Masculino</option></select></div>
+            <div class="input-group"><label>Função:</label><input type="text" name="Função"></div>
+            <div class="grid-check">
+                <label>Sexo:</label>
+                <label><input type="radio" name="Sexo" value="Feminino"> ( ) Feminino</label>
+                <label><input type="radio" name="Sexo" value="Masculino"> ( ) Masculino</label>
             </div>
-            <div class="grid-2">
-                <div class="input-group"><label>Nascimento:</label><input type="date" name="Data de Nascimento"></div>
-                <div class="input-group"><label>Estado Civil:</label><input type="text" name="Estado Civil"></div>
-            </div>
+            <div class="input-group"><label>Data de nascimento:</label><input type="text" name="Data de Nascimento" placeholder="__/__/____"></div>
+            <div class="input-group"><label>Estado Civil:</label><input type="text" name="Estado Civil"></div>
             <div class="btn-group"><button type="button" class="btn-next">Próximo</button></div>
         </div>
 
         <div class="form-step">
-            <h2>📞 Contatos</h2>
-            <div class="grid-2">
-                <div class="input-group"><label>Telefone (DDD):</label><input type="tel" name="Telefone"></div>
-                <div class="input-group"><label>Celular (DDD):</label><input type="tel" name="Celular"></div>
-            </div>
+            <h2>Contatos e Igreja</h2>
+            <div class="input-group"><label>Telefone:</label><input type="tel" name="Telefone" placeholder="( )"></div>
+            <div class="input-group"><label>Celular:</label><input type="tel" name="Celular" placeholder="( )"></div>
             <div class="input-group"><label>E-mail:</label><input type="email" name="E-mail"></div>
-            <div class="input-group"><label>Batizado (IASD):</label><select name="Batizado IASD"><option>Sim</option><option>Não</option></select></div>
+            <div class="grid-check">
+                <label>Batizado (IASD):</label>
+                <label><input type="radio" name="Batizado" value="Sim"> ( ) Sim</label>
+                <label><input type="radio" name="Batizado" value="Não"> ( ) Não</label>
+            </div>
             <div class="btn-group"><button type="button" class="btn-prev">Voltar</button><button type="button" class="btn-next">Próximo</button></div>
         </div>
 
         <div class="form-step">
-            <h2>🪪 Documentos</h2>
-            <div class="grid-2">
-                <div class="input-group"><label>RG:</label><input type="text" name="RG"></div>
-                <div class="input-group"><label>Org. Expedidor:</label><input type="text" name="Org Expedidor"></div>
-            </div>
+            <h2>Documentos</h2>
+            <div class="input-group"><label>RG:</label><input type="text" name="RG"></div>
+            <div class="input-group"><label>Org Expedidor:</label><input type="text" name="Org Expedidor"></div>
+            <div class="input-group"><label>Tam. da camiseta:</label><input type="text" name="Tamanho Camiseta"></div>
             <div class="input-group"><label>CPF:</label><input type="text" name="CPF"></div>
-            <div class="input-group"><label>Tamanho da Camiseta:</label><input type="text" name="Tam Camiseta"></div>
-            <div class="input-group"><label>Nº Certidão de Nascimento:</label><input type="text" name="Certidao Nascimento"></div>
+            <div class="input-group"><label>Certidão de Nascimento:</label><input type="text" name="Certidão de Nascimento"></div>
+            <p style="font-size:10px; color:gray;">Se não tiver CPF próprio, preencha o CPF de um dos responsáveis.</p>
             <div class="btn-group"><button type="button" class="btn-prev">Voltar</button><button type="button" class="btn-next">Próximo</button></div>
         </div>
 
         <div class="form-step">
-            <h2>🏠 Endereço</h2>
+            <h2>Endereço</h2>
             <div class="input-group"><label>Endereço:</label><input type="text" name="Endereço"></div>
-            <div class="grid-2">
-                <div class="input-group"><label>Número:</label><input type="text" name="Número"></div>
-                <div class="input-group"><label>Bairro:</label><input type="text" name="Bairro"></div>
-            </div>
-            <div class="grid-2">
-                <div class="input-group"><label>Cidade:</label><input type="text" name="Cidade"></div>
-                <div class="input-group"><label>Estado:</label><input type="text" name="Estado"></div>
-            </div>
+            <div class="input-group"><label>Número:</label><input type="text" name="Número"></div>
+            <div class="input-group"><label>Bairro:</label><input type="text" name="Bairro"></div>
             <div class="input-group"><label>CEP:</label><input type="text" name="CEP"></div>
+            <div class="input-group"><label>Complemento:</label><input type="text" name="Complemento"></div>
+            <div class="input-group"><label>Cidade:</label><input type="text" name="Cidade"></div>
+            <div class="input-group"><label>Estado:</label><input type="text" name="Estado"></div>
             <div class="btn-group"><button type="button" class="btn-prev">Voltar</button><button type="button" class="btn-next">Próximo</button></div>
         </div>
 
         <div class="form-step">
-            <h2>🎓 Escolaridade</h2>
-            <div class="input-group"><label>Nível de Escolaridade:</label>
-                <select name="Nível Escolaridade">
-                    <option>Ensino Fundamental</option><option>Ensino Médio</option>
-                    <option>Ensino Técnico</option><option>Ensino Superior</option>
-                    <option>Pós Graduação</option><option>Mestrado</option>
-                </select>
+            <h2>Nível de escolaridade</h2>
+            <div class="grid-check">
+                <label><input type="checkbox" name="Escolaridade" value="Educação Infantil"> ( ) Educação Infantil</label>
+                <label><input type="checkbox" name="Escolaridade" value="Ensino Fundamental"> ( ) Ensino Fundamental</label>
+                <label><input type="checkbox" name="Escolaridade" value="Ensino Médio"> ( ) Ensino Médio</label>
+                <label><input type="checkbox" name="Escolaridade" value="Ensino Técnico"> ( ) Ensino Técnico</label>
+                <label><input type="checkbox" name="Escolaridade" value="Ensino Superior"> ( ) Ensino Superior</label>
+                <label><input type="checkbox" name="Escolaridade" value="Pós Graduação"> ( ) Pós Graduação</label>
+                <label><input type="checkbox" name="Escolaridade" value="Mestrado"> ( ) Mestrado</label>
+                <label><input type="checkbox" name="Escolaridade" value="MBA"> ( ) MBA</label>
+                <label><input type="checkbox" name="Escolaridade" value="Doutorado"> ( ) Doutorado</label>
             </div>
-            <div class="input-group"><label>Status:</label><select name="Status Escolaridade"><option>Cursando</option><option>Completo</option><option>Incompleto</option></select></div>
-            <div class="input-group"><label>Área de Conhecimento:</label><input type="text" name="Area Conhecimento"></div>
+            <div class="grid-check">
+                <label>Status:</label>
+                <label><input type="radio" name="StatusEscola" value="Cursando"> ( ) Cursando</label>
+                <label><input type="radio" name="StatusEscola" value="Completo"> ( ) Completo</label>
+                <label><input type="radio" name="StatusEscola" value="Incompleto"> ( ) Incompleto</label>
+            </div>
+            <div class="btn-group"><button type="button" class="btn-prev">Voltar</button><button type="button" class="btn-next">Próximo</button></div>
+        </div>
+
+        <div class="form-step">
+            <h2>Área de Conhecimento</h2>
+            <div class="grid-check">
+                <label><input type="checkbox" name="Area" value="Ciências Agrárias"> ( ) Ciências Agrárias</label>
+                <label><input type="checkbox" name="Area" value="Ciências Biológicas"> ( ) Ciências Biológicas</label>
+                <label><input type="checkbox" name="Area" value="Ciências da Saúde"> ( ) Ciências da Saúde</label>
+                <label><input type="checkbox" name="Area" value="Ciências Exatas"> ( ) Ciências Exatas</label>
+                <label><input type="checkbox" name="Area" value="Ciências Humanas"> ( ) Ciências Humanas</label>
+                <label><input type="checkbox" name="Area" value="Ciências Sociais"> ( ) Ciências Sociais</label>
+                <label><input type="checkbox" name="Area" value="Curso Técnico"> ( ) Curso Técnico</label>
+                <label><input type="checkbox" name="Area" value="Engenharia"> ( ) Engenharia</label>
+                <label><input type="checkbox" name="Area" value="Linguística, Letras e Artes"> ( ) Linguística, Letras e Artes</label>
+                <label><input type="checkbox" name="Area" value="Nível Escolar"> ( ) Nível Escolar</label>
+                <label><input type="checkbox" name="Area" value="Tecnologia"> ( ) Tecnologia</label>
+            </div>
+            <div class="input-group"><label>Nome do Curso:</label><input type="text" name="Nome do Curso"></div>
             <div class="input-group"><label>Instituição de Ensino:</label><input type="text" name="Instituição"></div>
             <div class="btn-group"><button type="button" class="btn-prev">Voltar</button><button type="button" class="btn-next">Próximo</button></div>
         </div>
 
         <div class="form-step">
-            <h2>🏥 Saúde Profissional</h2>
-            <div class="checkbox-group">
-                <label><input type="checkbox" name="SaudeProf" value="Médico"> Médico</label>
-                <label><input type="checkbox" name="SaudeProf" value="Enfermeiro"> Enfermeiro</label>
-                <label><input type="checkbox" name="SaudeProf" value="Socorrista"> Socorrista</label>
-                <label><input type="checkbox" name="SaudeProf" value="Psicólogo"> Psicólogo</label>
+            <h2>Profissional de saúde</h2>
+            <div class="grid-check">
+                <label><input type="radio" name="ProfSaude" value="Não"> ( ) Não</label>
+                <label><input type="radio" name="ProfSaude" value="Sim"> ( ) Sim</label>
+                <label><input type="checkbox" name="QualSaude" value="Dentista"> ( ) Dentista</label>
+                <label><input type="checkbox" name="QualSaude" value="Enfermeiro"> ( ) Enfermeiro</label>
+                <label><input type="checkbox" name="QualSaude" value="Fisioterapeuta"> ( ) Fisioterapeuta</label>
+                <label><input type="checkbox" name="QualSaude" value="Médico"> ( ) Médico</label>
+                <label><input type="checkbox" name="QualSaude" value="Psicólogo"> ( ) Psicólogo</label>
+                <label><input type="checkbox" name="QualSaude" value="Socorrista"> ( ) Socorrista</label>
+                <label><input type="checkbox" name="QualSaude" value="Técnico de Enfermagem"> ( ) Técnico de Enfermagem</label>
             </div>
-            <h2 style="margin-top:20px;">👨‍👩‍👧 Responsáveis</h2>
+            <div class="input-group"><label>Número do documento e Órgão Expedidor:</label><input type="text" name="Doc Profissional"></div>
+            <hr>
+            <h2>Pais</h2>
             <div class="input-group"><label>Nome do Pai:</label><input type="text" name="Nome do Pai"></div>
             <div class="input-group"><label>Nome da Mãe:</label><input type="text" name="Nome da Mãe"></div>
             <div class="btn-group"><button type="button" class="btn-prev">Voltar</button><button type="button" class="btn-next">Próximo</button></div>
         </div>
 
         <div class="form-step">
-            <h2>🚨 Contato de Emergência</h2>
-            <div class="input-group"><label>Nome do Contato:</label><input type="text" name="Emergencia Nome
+            <h2>Contato de Emergência</h2>
+            <div class="input-group"><label>Nome do contato:</label><input type="text" name="Contato Emergencia"></div>
+            <div class="input-group"><label>Grau de parentesco:</label><input type="text" name="Parentesco"></div>
+            <div class="input-group"><label>Tel/Cel:</label><input type="tel" name="Tel Emergencia"></div>
+            <div class="input-group"><label>E-mail do contato:</label><input type="email" name="Email Emergencia"></div>
+            <div class="btn-group"><button type="button" class="btn-prev">Voltar</button><button type="button" class="btn-next">Próximo</button></div>
+        </div>
+
+        <div class="form-step">
+            <h2>Ficha Médica</h2>
+            <div class="input-group"><label>Nº do cartão SUS:</label><input type="text" name="Cartão SUS"></div>
+            <div class="grid-check">
+                <label>Plano de saúde:</label>
+                <label><input type="radio" name="Plano" value="Não"> ( ) Não</label>
+                <label><input type="radio" name="Plano" value="Sim"> ( ) Sim</label>
+            </div>
+            <div class="input-group"><label>Tipagem sanguínea:</label><input type="text" name="Sangue" placeholder="( ) A ( ) B ( ) O ( ) AB"></div>
+            <div class="grid-check">
+                <label>Fator RH:</label>
+                <label><input type="radio" name="RH" value="Positivo"> ( ) Positivo</label>
+                <label><input type="radio" name="RH" value="Negativo"> ( ) Negativo</label>
+            </div>
+            <div class="btn-group"><button type="button" class="btn-prev">Voltar</button><button type="button" class="btn-next">Próximo</button></div>
+        </div>
+
+        <div class="form-step">
+            <h2>Doenças que já teve</h2>
+            <div class="grid-check" style="font-size:10px;">
+                <label><input type="checkbox" name="Teve" value="Catapora"> Catapora</label>
+                <label><input type="checkbox" name="Teve" value="Meningite"> Meningite</label>
+                <label><input type="checkbox" name="Teve" value="Hepatite"> Hepatite</label>
+                <label><input type="checkbox" name="Teve" value="Dengue"> Dengue</label>
+                <label><input type="checkbox" name="Teve" value="Pneumonia"> Pneumonia</label>
+                <label><input type="checkbox" name="Teve" value="Malária"> Malária</label>
+                <label><input type="checkbox" name="Teve" value="Covid-19"> Covid-19</label>
+                <label><input type="checkbox" name="Teve" value="Tétano"> Tétano</label>
+            </div>
+            <div class="input-group"><label>Outros problemas/medicamentos:</label><textarea name="Outros" rows="2"></textarea></div>
+            <hr>
+            <p style="font-size:10px; margin-bottom:10px;">Me responsabilizo por todas as informações desta Ficha de Cadastro e Ficha Médica, e garanto como fiel e verdadeiro.</p>
+            <div class="input-group"><label>Assinatura do Responsável:</label><input type="text" name="Assinatura" required></div>
+            <div class="input-group"><label>CPF do Responsável:</label><input type="text" name="CPF Resp"></div>
+            <div class="btn-group">
+                <button type="button" class="btn-prev">Voltar</button>
+                <button type="submit" class="btn-submit">ENVIAR NO WHATSAPP</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<div class="modal" id="modalZap">
+    <div class="modal-content">
+        <h3 style="color:#e74c3c">⚠️ AVISO</h3>
+        <p style="margin:15px 0;">O WhatsApp vai abrir. **Não esqueça de anexar a foto do RG e do SUS** antes de clicar em enviar no zap!</p>
+        <button id="btnConfirm" style="background:#25d366; color:white;">ENTENDIDO, ENVIAR</button>
+    </div>
+</div>
+
+<script>
+    const steps = Array.from(document.querySelectorAll(".form-step"));
+    const fill = document.getElementById("fill");
+    const stepNow = document.getElementById("stepNow");
+    let url = "";
+
+    document.querySelectorAll(".btn-next").forEach(b => {
+        b.onclick = () => {
+            const active = document.querySelector(".form-step.active");
+            const idx = steps.indexOf(active);
+            active.classList.remove("active");
+            steps[idx+1].classList.add("active");
+            fill.style.width = ((idx+2)*10) + "%";
+            window.scrollTo(0,0);
+        }
+    });
+
+    document.querySelectorAll(".btn-prev").forEach(b => {
+        b.onclick = () => {
+            const active = document.querySelector(".form-step.active");
+            const idx = steps.indexOf(active);
+            active.classList.remove("active");
+            steps[idx-1].classList.add("active");
+            fill.style.width = ((idx)*10) + "%";
+            window.scrollTo(0,0);
+        }
+    });
+
+    document.getElementById("formSirius").onsubmit = (e) => {
+        e.preventDefault();
+        const d = new FormData(e.target);
+        let m = "⭐ *FICHA SIRIUS OFICIAL*\n\n";
+        d.forEach((v, k) => { if(v) m += `*${k}:* ${v}\n`; });
+        url = `https://api.whatsapp.com/send?phone=559291404115&text=${encodeURIComponent(m)}`;
+        document.getElementById("modalZap").style.display = "flex";
+    };
+
+    document.getElementById("btnConfirm").onclick = () => { window.location.href = url; };
+</script>
+
+</body>
+</html>
