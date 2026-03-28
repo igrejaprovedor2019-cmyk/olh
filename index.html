@@ -3,69 +3,233 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIRIUS - FICHA OFICIAL COMPLETA</title>
+    <title>SIRIUS - FICHA OFICIAL</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --blue: #001c3d; --gold: #ffcc00; }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
-        body { background: #000c1a; padding-bottom: 50px; }
-        .header { background: var(--blue); color: white; padding: 25px; text-align: center; border-bottom: 4px solid var(--gold); }
-        .container { max-width: 500px; margin: 15px auto; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .prog { height: 8px; background: #eee; }
-        .prog-fill { height: 100%; background: var(--blue); width: 10%; transition: 0.3s; }
-        form { padding: 20px; }
+        /* CORES SIRIUS */
+        :root { 
+            --blue: #001c3d; 
+            --gold: #ffcc00; 
+            --dark-gold: #d4ac00;
+            --white: #ffffff;
+            --gray: #f4f7f6;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+
+        body { 
+            background: linear-gradient(135deg, #001c3d 0%, #000c1a 100%); 
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 40px;
+        }
+
+        /* CABEÇALHO COM ESTILO */
+        .header { 
+            padding: 40px 20px; 
+            text-align: center; 
+            color: var(--white);
+        }
+        
+        .header i { 
+            font-size: 50px; 
+            color: var(--gold); 
+            filter: drop-shadow(0 0 10px rgba(255, 204, 0, 0.5));
+            margin-bottom: 15px; 
+        }
+
+        .header h1 { 
+            font-size: 22px; 
+            letter-spacing: 3px; 
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+
+        /* CONTAINER PRINCIPAL */
+        .container { 
+            max-width: 480px; 
+            width: 90%;
+            margin: 0 auto; 
+            background: var(--white); 
+            border-radius: 25px; 
+            overflow: hidden; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* BARRA DE PROGRESSO */
+        .prog-container { background: #e0e0e0; height: 6px; }
+        .prog-fill { 
+            height: 100%; 
+            background: linear-gradient(90deg, var(--gold), var(--dark-gold)); 
+            width: 10%; 
+            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+
+        form { padding: 30px; }
         .step { display: none; }
-        .step.active { display: block; }
-        h2 { font-size: 14px; color: var(--blue); margin-bottom: 15px; border-bottom: 2px solid var(--gold); padding-bottom: 5px; text-transform: uppercase; }
-        .field { margin-bottom: 12px; }
-        label { display: block; font-size: 10px; font-weight: 900; color: #555; text-transform: uppercase; margin-bottom: 3px; }
-        input, select, textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; }
-        .opts { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; background: #fdfdfd; padding: 10px; border: 1px inset #eee; border-radius: 6px; }
-        .opts label { display: flex; align-items: center; gap: 6px; font-weight: normal; text-transform: none; font-size: 12px; cursor: pointer; }
-        .opts input { width: auto; }
-        .btns { display: flex; gap: 8px; margin-top: 20px; }
-        button { flex: 1; padding: 15px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; text-transform: uppercase; }
-        .next { background: var(--blue); color: white; }
-        .prev { background: #e0e0e0; }
-        .send { background: #27ae60; color: white; }
-        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 99; align-items: center; justify-content: center; padding: 20px; }
-        .m-box { background: white; padding: 25px; border-radius: 15px; text-align: center; }
+        .step.active { display: block; animation: slideIn 0.4s ease-out; }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 { 
+            font-size: 14px; 
+            color: var(--blue); 
+            margin-bottom: 20px; 
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        h2::after {
+            content: "";
+            flex: 1;
+            height: 2px;
+            background: var(--gray);
+        }
+
+        /* CAMPOS DE ENTRADA */
+        .field { margin-bottom: 18px; }
+        label { 
+            display: block; 
+            font-size: 11px; 
+            font-weight: 700; 
+            color: #666; 
+            text-transform: uppercase; 
+            margin-bottom: 6px; 
+            padding-left: 5px;
+        }
+
+        input, select, textarea { 
+            width: 100%; 
+            padding: 14px; 
+            border: 2px solid #edf2f7; 
+            border-radius: 12px; 
+            font-size: 15px; 
+            background: #f8fafc;
+            transition: 0.3s;
+        }
+
+        input:focus { border-color: var(--gold); outline: none; background: white; }
+
+        /* OPÇÕES DE MARCAR (CHECKBOX/RADIO) */
+        .opts { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 10px; 
+            background: #f8fafc; 
+            padding: 15px; 
+            border-radius: 12px;
+        }
+
+        .opts label { 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            font-weight: 500; 
+            text-transform: none; 
+            font-size: 13px; 
+            cursor: pointer;
+            margin: 0;
+            color: #444;
+        }
+
+        .opts input[type="radio"], .opts input[type="checkbox"] { 
+            width: 18px; 
+            height: 18px; 
+            accent-color: var(--blue);
+        }
+
+        /* BOTÕES */
+        .btns { display: flex; gap: 12px; margin-top: 30px; }
+        button { 
+            flex: 1; 
+            padding: 18px; 
+            border: none; 
+            border-radius: 15px; 
+            font-weight: 700; 
+            cursor: pointer; 
+            text-transform: uppercase;
+            transition: 0.3s;
+            font-size: 13px;
+        }
+
+        .next { background: var(--blue); color: white; box-shadow: 0 4px 15px rgba(0,28,61,0.3); }
+        .next:hover { transform: translateY(-2px); background: #002d62; }
+
+        .prev { background: #f0f0f0; color: #666; }
+
+        .send { 
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%); 
+            color: white; 
+            font-size: 15px;
+            box-shadow: 0 4px 15px rgba(39,174,96,0.3);
+        }
+
+        /* MODAL WHATSAPP */
+        .modal { 
+            display: none; 
+            position: fixed; 
+            inset: 0; 
+            background: rgba(0,12,26,0.9); 
+            z-index: 100; 
+            align-items: center; 
+            justify-content: center; 
+            padding: 20px; 
+            backdrop-filter: blur(5px);
+        }
+
+        .m-box { 
+            background: white; 
+            padding: 35px; 
+            border-radius: 25px; 
+            text-align: center; 
+            max-width: 400px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        .m-box i { font-size: 50px; color: #25d366; margin-bottom: 20px; }
+        .m-box h3 { margin-bottom: 10px; color: var(--blue); }
+        .m-box p { font-size: 14px; color: #666; margin-bottom: 25px; line-height: 1.5; }
     </style>
 </head>
 <body>
 
 <div class="header">
-    <i class="fas fa-star" style="font-size:35px; color:var(--gold); margin-bottom:10px;"></i>
-    <h1 style="font-size:16px;">CLUBE DE DESBRAVADORES SIRIUS</h1>
+    <i class="fas fa-star"></i>
+    <h1>SIRIUS</h1>
 </div>
 
 <div class="container">
-    <div class="prog"><div class="prog-fill" id="bar"></div></div>
+    <div class="prog-container"><div class="prog-fill" id="bar"></div></div>
+    
     <form id="fSirius">
-        
         <div class="step active">
-            <h2>Ficha de Cadastro - Pág 1</h2>
-            <div class="field"><label>Nome Completo:</label><input type="text" name="Nome Completo" required></div>
-            <div class="field"><label>Função:</label><input type="text" name="Função"></div>
-            <div class="field">
-                <label>Sexo:</label>
+            <h2><i class="fas fa-user"></i> Identificação 1/10</h2>
+            <div class="field"><label>Nome Completo:</label><input type="text" name="Nome" required placeholder="Digite seu nome"></div>
+            <div class="field"><label>Função no Clube:</label><input type="text" name="Funcao"></div>
+            <div class="field"><label>Sexo:</label>
                 <div class="opts">
                     <label><input type="radio" name="Sexo" value="Feminino"> Feminino</label>
                     <label><input type="radio" name="Sexo" value="Masculino"> Masculino</label>
                 </div>
             </div>
-            <div class="field"><label>Data de nascimento:</label><input type="text" name="Nascimento" placeholder="dd/mm/aaaa"></div>
-            <div class="field"><label>Estado Civil:</label><input type="text" name="Estado Civil"></div>
+            <div class="field"><label>Nascimento:</label><input type="text" name="Nasc" placeholder="00/00/0000"></div>
             <div class="btns"><button type="button" class="next">Próximo</button></div>
         </div>
 
         <div class="step">
-            <h2>Ficha de Cadastro - Pág 2</h2>
-            <div class="field"><label>Telefone:</label><input type="tel" name="Telefone"></div>
-            <div class="field"><label>Celular:</label><input type="tel" name="Celular"></div>
-            <div class="field"><label>E-mail:</label><input type="email" name="E-mail"></div>
-            <div class="field">
-                <label>Batizado (IASD):</label>
+            <h2><i class="fas fa-phone"></i> Contatos 2/10</h2>
+            <div class="field"><label>Estado Civil:</label><input type="text" name="Est_Civil"></div>
+            <div class="field"><label>WhatsApp:</label><input type="tel" name="Celular" placeholder="(00) 00000-0000"></div>
+            <div class="field"><label>E-mail:</label><input type="email" name="Email"></div>
+            <div class="field"><label>Batizado (IASD):</label>
                 <div class="opts">
                     <label><input type="radio" name="Batizado" value="Sim"> Sim</label>
                     <label><input type="radio" name="Batizado" value="Não"> Não</label>
@@ -75,102 +239,86 @@
         </div>
 
         <div class="step">
-            <h2>Ficha de Cadastro - Pág 3</h2>
+            <h2><i class="fas fa-id-card"></i> Documentos 3/10</h2>
             <div class="field"><label>RG:</label><input type="text" name="RG"></div>
-            <div class="field"><label>Org Expedidor:</label><input type="text" name="Org Expedidor"></div>
-            <div class="field"><label>Tamanho da camiseta:</label><input type="text" name="Tamanho Camiseta"></div>
+            <div class="field"><label>Orgão Expedidor:</label><input type="text" name="Org"></div>
             <div class="field"><label>CPF:</label><input type="text" name="CPF"></div>
-            <div class="field"><label>Nº Certidão de Nascimento:</label><input type="text" name="Certidao Nascimento"></div>
+            <div class="field"><label>Tamanho Camiseta:</label><input type="text" name="Camiseta"></div>
+            <div class="field"><label>Certidão de Nascimento:</label><input type="text" name="Certidao"></div>
             <div class="btns"><button type="button" class="prev">Voltar</button><button type="button" class="next">Próximo</button></div>
         </div>
 
         <div class="step">
-            <h2>Endereço</h2>
-            <div class="field"><label>Endereço:</label><input type="text" name="Endereço"></div>
-            <div class="field"><label>Número:</label><input type="text" name="Número"></div>
+            <h2><i class="fas fa-home"></i> Endereço 4/10</h2>
+            <div class="field"><label>Rua/Avenida:</label><input type="text" name="Rua"></div>
+            <div class="field"><label>Número:</label><input type="text" name="Num"></div>
             <div class="field"><label>Bairro:</label><input type="text" name="Bairro"></div>
             <div class="field"><label>CEP:</label><input type="text" name="CEP"></div>
-            <div class="field"><label>Complemento:</label><input type="text" name="Complemento"></div>
-            <div class="field"><label>Cidade:</label><input type="text" name="Cidade"></div>
-            <div class="field"><label>Estado:</label><input type="text" name="Estado"></div>
+            <div class="field"><label>Cidade/Estado:</label><input type="text" name="Cidade_UF"></div>
             <div class="btns"><button type="button" class="prev">Voltar</button><button type="button" class="next">Próximo</button></div>
         </div>
 
         <div class="step">
-            <h2>Nível de Escolaridade</h2>
+            <h2><i class="fas fa-graduation-cap"></i> Escolaridade 5/10</h2>
             <div class="opts">
-                <label><input type="checkbox" name="Nivel" value="Educação Infantil"> Ed. Infantil</label>
-                <label><input type="checkbox" name="Nivel" value="Ensino Fundamental"> Fundamental</label>
-                <label><input type="checkbox" name="Nivel" value="Ensino Médio"> Médio</label>
-                <label><input type="checkbox" name="Nivel" value="Ensino Técnico"> Técnico</label>
-                <label><input type="checkbox" name="Nivel" value="Ensino Superior"> Superior</label>
-                <label><input type="checkbox" name="Nivel" value="Pós Graduação"> Pós Graduação</label>
-                <label><input type="checkbox" name="Nivel" value="Mestrado"> Mestrado</label>
-                <label><input type="checkbox" name="Nivel" value="MBA"> MBA</label>
-                <label><input type="checkbox" name="Nivel" value="Doutorado"> Doutorado</label>
-            </div>
-            <h2 style="margin-top:10px">Status</h2>
-            <div class="opts">
-                <label><input type="radio" name="Status" value="Cursando"> Cursando</label>
-                <label><input type="radio" name="Status" value="Completo"> Completo</label>
-                <label><input type="radio" name="Status" value="Incompleto"> Incompleto</label>
+                <label><input type="checkbox" name="Escola" value="Ed. Infantil"> Ed. Infantil</label>
+                <label><input type="checkbox" name="Escola" value="Fundamental"> Fundamental</label>
+                <label><input type="checkbox" name="Escola" value="Médio"> Médio</label>
+                <label><input type="checkbox" name="Escola" value="Técnico"> Técnico</label>
+                <label><input type="checkbox" name="Escola" value="Superior"> Superior</label>
+                <label><input type="checkbox" name="Escola" value="Pós"> Pós</label>
+                <label><input type="checkbox" name="Escola" value="Mestrado"> Mestrado</label>
+                <label><input type="checkbox" name="Escola" value="MBA"> MBA</label>
+                <label><input type="checkbox" name="Escola" value="Doutorado"> Doutorado</label>
             </div>
             <div class="btns"><button type="button" class="prev">Voltar</button><button type="button" class="next">Próximo</button></div>
         </div>
 
         <div class="step">
-            <h2>Área de Conhecimento</h2>
+            <h2><i class="fas fa-book"></i> Área de Estudo 6/10</h2>
             <div class="opts">
-                <label><input type="checkbox" name="Area" value="Ciências Agrárias"> Agrárias</label>
-                <label><input type="checkbox" name="Area" value="Ciências Biológicas"> Biológicas</label>
-                <label><input type="checkbox" name="Area" value="Ciências da Saúde"> Saúde</label>
-                <label><input type="checkbox" name="Area" value="Ciências Exatas"> Exatas</label>
-                <label><input type="checkbox" name="Area" value="Ciências Humanas"> Humanas</label>
-                <label><input type="checkbox" name="Area" value="Ciências Sociais"> Sociais</label>
-                <label><input type="checkbox" name="Area" value="Curso Técnico"> Técnico</label>
+                <label><input type="checkbox" name="Area" value="Agrárias"> Agrárias</label>
+                <label><input type="checkbox" name="Area" value="Biológicas"> Biológicas</label>
+                <label><input type="checkbox" name="Area" value="Saúde"> Saúde</label>
+                <label><input type="checkbox" name="Area" value="Exatas"> Exatas</label>
+                <label><input type="checkbox" name="Area" value="Humanas"> Humanas</label>
+                <label><input type="checkbox" name="Area" value="Sociais"> Sociais</label>
                 <label><input type="checkbox" name="Area" value="Engenharia"> Engenharia</label>
-                <label><input type="checkbox" name="Area" value="Linguística, Letras e Artes"> Artes/Letras</label>
-                <label><input type="checkbox" name="Area" value="Nível Escolar"> Nível Escolar</label>
                 <label><input type="checkbox" name="Area" value="Tecnologia"> Tecnologia</label>
+                <label><input type="checkbox" name="Area" value="Letras/Artes"> Letras/Artes</label>
             </div>
             <div class="btns"><button type="button" class="prev">Voltar</button><button type="button" class="next">Próximo</button></div>
         </div>
 
         <div class="step">
-            <div class="field"><label>Nome do Curso:</label><input type="text" name="Nome do Curso"></div>
-            <div class="field"><label>Instituição de Ensino:</label><input type="text" name="Instituição"></div>
-            <h2>Profissional de Saúde?</h2>
-            <div class="opts">
-                <label><input type="checkbox" name="Saude" value="Dentista"> Dentista</label>
-                <label><input type="checkbox" name="Saude" value="Enfermeiro"> Enfermeiro</label>
-                <label><input type="checkbox" name="Saude" value="Fisioterapeuta"> Fisio</label>
-                <label><input type="checkbox" name="Saude" value="Médico"> Médico</label>
-                <label><input type="checkbox" name="Saude" value="Psicólogo"> Psicólogo</label>
-                <label><input type="checkbox" name="Saude" value="Socorrista"> Socorrista</label>
-                <label><input type="checkbox" name="Saude" value="Técnico Enfermagem"> Téc. Enferm.</label>
+            <h2><i class="fas fa-briefcase-medical"></i> Profissional 7/10</h2>
+            <div class="field"><label>Curso/Faculdade:</label><input type="text" name="Estudos"></div>
+            <div class="field"><label>Profissão na Saúde:</label>
+                <div class="opts">
+                    <label><input type="checkbox" name="Prof" value="Dentista"> Dentista</label>
+                    <label><input type="checkbox" name="Prof" value="Enfermeiro"> Enfermeiro</label>
+                    <label><input type="checkbox" name="Prof" value="Médico"> Médico</label>
+                    <label><input type="checkbox" name="Prof" value="Socorrista"> Socorrista</label>
+                </div>
             </div>
-            <div class="field" style="margin-top:10px"><label>Nº do documento e Org. Expedidor:</label><input type="text" name="Doc Saude"></div>
+            <div class="field"><label>Pai:</label><input type="text" name="Pai"></div>
+            <div class="field"><label>Mãe:</label><input type="text" name="Mae"></div>
             <div class="btns"><button type="button" class="prev">Voltar</button><button type="button" class="next">Próximo</button></div>
         </div>
 
         <div class="step">
-            <h2>Família</h2>
-            <div class="field"><label>Nome do Pai:</label><input type="text" name="Pai"></div>
-            <div class="field"><label>Nome da Mãe:</label><input type="text" name="Mãe"></div>
-            <hr style="margin:15px 0">
-            <h2>Contato de Emergência</h2>
-            <div class="field"><label>Nome do contato:</label><input type="text" name="Emergencia Nome"></div>
-            <div class="field"><label>Grau de parentesco:</label><input type="text" name="Parentesco"></div>
-            <div class="field"><label>Tel/Cel Emergência:</label><input type="tel" name="Emergencia Tel"></div>
+            <h2><i class="fas fa-exclamation-triangle"></i> Emergência 8/10</h2>
+            <div class="field"><label>Falar com:</label><input type="text" name="Emerg_Nome"></div>
+            <div class="field"><label>Parentesco:</label><input type="text" name="Parentesco"></div>
+            <div class="field"><label>Telefone Urgente:</label><input type="tel" name="Emerg_Tel"></div>
             <div class="btns"><button type="button" class="prev">Voltar</button><button type="button" class="next">Próximo</button></div>
         </div>
 
         <div class="step">
-            <h2>Ficha Médica</h2>
-            <div class="field"><label>Nº do cartão SUS:</label><input type="text" name="SUS"></div>
-            <div class="field"><label>Plano de Saúde (Nome):</label><input type="text" name="Plano"></div>
-            <div class="field">
-                <label>Tipagem Sanguínea:</label>
+            <h2><i class="fas fa-notes-medical"></i> Saúde 9/10</h2>
+            <div class="field"><label>Número do SUS:</label><input type="text" name="SUS"></div>
+            <div class="field"><label>Plano de Saúde:</label><input type="text" name="Plano"></div>
+            <div class="field"><label>Tipo Sanguíneo:</label>
                 <div class="opts">
                     <label><input type="radio" name="Sangue" value="A"> A</label>
                     <label><input type="radio" name="Sangue" value="B"> B</label>
@@ -178,43 +326,31 @@
                     <label><input type="radio" name="Sangue" value="AB"> AB</label>
                 </div>
             </div>
-            <div class="field">
-                <label>Fator RH:</label>
-                <div class="opts">
-                    <label><input type="radio" name="RH" value="Positivo"> Positivo</label>
-                    <label><input type="radio" name="RH" value="Negativo"> Negativo</label>
-                </div>
-            </div>
             <div class="btns"><button type="button" class="prev">Voltar</button><button type="button" class="next">Próximo</button></div>
         </div>
 
         <div class="step">
-            <h2>Doenças que já teve</h2>
-            <div class="opts" style="font-size:10px">
+            <h2><i class="fas fa-virus"></i> Histórico 10/10</h2>
+            <div class="opts">
                 <label><input type="checkbox" name="Teve" value="Catapora"> Catapora</label>
+                <label><input type="checkbox" name="Teve" value="Dengue"> Dengue</label>
+                <label><input type="checkbox" name="Teve" value="Covid"> Covid</label>
                 <label><input type="checkbox" name="Teve" value="Meningite"> Meningite</label>
                 <label><input type="checkbox" name="Teve" value="Hepatite"> Hepatite</label>
-                <label><input type="checkbox" name="Teve" value="Dengue"> Dengue</label>
-                <label><input type="checkbox" name="Teve" value="Pneumonia"> Pneumonia</label>
-                <label><input type="checkbox" name="Teve" value="Malária"> Malária</label>
-                <label><input type="checkbox" name="Teve" value="Covid-19"> Covid-19</label>
-                <label><input type="checkbox" name="Teve" value="Tétano"> Tétano</label>
-                <label><input type="checkbox" name="Teve" value="Febre Amarela"> F. Amarela</label>
+                <label><input type="checkbox" name="Teve" value="Malaria"> Malária</label>
             </div>
-            <div class="field" style="margin-top:10px"><label>Remédios/Alergias/Obs:</label><textarea name="Obs" rows="2"></textarea></div>
-            <div class="field"><label>Assinatura Responsável:</label><input type="text" name="Assinatura" required></div>
-            <div class="field"><label>CPF Responsável:</label><input type="text" name="CPF Resp"></div>
-            <div class="btns"><button type="button" class="prev">Voltar</button><button type="submit" class="send">FINALIZAR</button></div>
+            <div class="field" style="margin-top:20px;"><label>Assinatura Resp.:</label><input type="text" name="Assinatura" required placeholder="Nome completo"></div>
+            <div class="btns"><button type="button" class="prev">Voltar</button><button type="submit" class="send">Finalizar Ficha</button></div>
         </div>
-
     </form>
 </div>
 
 <div class="modal" id="mZap">
     <div class="m-box">
-        <h3 style="color:#c0392b">⚠️ AVISO</h3>
-        <p style="margin:15px 0; font-size:14px;">O WhatsApp vai abrir. <b>ANEXE AS FOTOS DO RG E SUS</b> manualmente!</p>
-        <button id="btnGo" style="background:#25d366; color:white; width:100%; padding:15px; border:none; border-radius:8px; font-weight:bold;">ABRIR WHATSAPP</button>
+        <i class="fab fa-whatsapp"></i>
+        <h3>Quase lá!</h3>
+        <p>Ao clicar abaixo, o WhatsApp abrirá com todos os seus dados. Basta clicar em enviar!</p>
+        <button id="btnGo" style="background:#25d366; color:white; width:100%">ABRIR WHATSAPP</button>
     </div>
 </div>
 
@@ -230,7 +366,7 @@
             current.classList.remove("active");
             steps[i+1].classList.add("active");
             bar.style.width = ((i+2)*10) + "%";
-            window.scrollTo(0,0);
+            window.scrollTo({top: 0, behavior: 'smooth'});
         }
     });
 
@@ -241,16 +377,20 @@
             current.classList.remove("active");
             steps[i-1].classList.add("active");
             bar.style.width = ((i)*10) + "%";
-            window.scrollTo(0,0);
+            window.scrollTo({top: 0, behavior: 'smooth'});
         }
     });
 
-    document.getElementById("fSirius").onsubmit = (e) => {
+    document.getElementById("fSirius").onsubmit = function(e) {
         e.preventDefault();
-        const d = new FormData(e.target);
-        let m = "⭐ *FICHA SIRIUS OFICIAL*\n\n";
-        d.forEach((v, k) => { if(v) m += `*${k}:* ${v}\n`; });
-        zapUrl = `https://api.whatsapp.com/send?phone=559291404115&text=${encodeURIComponent(m)}`;
+        let msg = "⭐ *FICHA SIRIUS OFICIAL* ⭐\n\n";
+        const dados = new FormData(this);
+        
+        for (let [key, value] of dados.entries()) {
+            if(value) msg += `*${key}:* ${value}\n`;
+        }
+
+        zapUrl = `https://api.whatsapp.com/send?phone=559291404115&text=${encodeURIComponent(msg)}`;
         document.getElementById("mZap").style.display = "flex";
     };
 
