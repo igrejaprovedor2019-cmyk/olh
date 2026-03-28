@@ -3,41 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIRIUS - FICHA COMPLETA</title>
+    <title>SIRIUS - FICHA OFICIAL</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root { --blue: #001c3d; --gold: #ffcc00; --bg: #0b0e14; --card: #161b22; }
+        :root { --blue: #001c3d; --gold: #ffcc00; --bg: #001c3d; --card: rgba(22, 27, 34, 0.95); }
+        
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
-        body { background-color: var(--bg); color: white; padding: 20px 0; }
-        .header { text-align: center; margin-bottom: 20px; }
-        .logo { width: 100px; margin-bottom: 10px; border-radius: 50%; }
-        .container { max-width: 600px; width: 95%; margin: 0 auto; background: var(--card); border-radius: 15px; overflow: hidden; border: 1px solid #30363d; }
-        .prog-bar { height: 8px; background: #0d1117; }
-        .prog-fill { height: 100%; background: var(--gold); width: 10%; transition: 0.4s; }
-        form { padding: 25px; }
+        
+        body { 
+            background-color: var(--bg); 
+            background-image: radial-gradient(circle, #002d62 0%, #001c3d 100%);
+            color: white; 
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .header { text-align: center; margin-bottom: 30px; z-index: 10; }
+        .logo { width: 120px; filter: drop-shadow(0 0 10px rgba(255,204,0,0.3)); margin-bottom: 10px; }
+        .header h1 { font-size: 22px; letter-spacing: 2px; color: white; text-transform: uppercase; }
+
+        .container { 
+            max-width: 550px; 
+            width: 90%; 
+            background: var(--card); 
+            border-radius: 20px; 
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .prog-bar { height: 6px; background: rgba(255,255,255,0.1); }
+        .prog-fill { height: 100%; background: var(--gold); width: 10%; transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        
+        form { padding: 30px; }
         .step { display: none; }
-        .step.active { display: block; animation: fadeIn 0.4s; }
-        @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
-        h2 { color: var(--gold); font-size: 18px; margin-bottom: 20px; border-bottom: 1px solid #30363d; padding-bottom: 10px; text-transform: uppercase; }
-        h3 { font-size: 14px; color: #fff; margin: 15px 0 10px 0; border-left: 3px solid var(--gold); padding-left: 10px; }
-        label { display: block; font-size: 11px; color: #8b949e; margin-bottom: 5px; text-transform: uppercase; }
-        input, select, textarea { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #30363d; border-radius: 8px; background: #0d1117; color: white; }
-        .grid-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; background: #0d1117; padding: 10px; border-radius: 8px; }
-        .check-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #c9d1d9; }
-        .check-item input { width: auto; margin: 0; }
-        .btns { display: flex; gap: 10px; margin-top: 20px; }
-        button { flex: 1; padding: 15px; border-radius: 8px; border: none; font-weight: bold; cursor: pointer; text-transform: uppercase; }
-        .next { background: var(--blue); color: white; }
-        .prev { background: #30363d; color: #ccc; }
-        .send { background: #25d366; color: white; }
+        /* Força a primeira etapa a ser visível imediatamente */
+        .step.active { display: block; animation: slideUp 0.5s ease; }
+
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        h2 { color: var(--gold); font-size: 18px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        label { display: block; font-size: 11px; color: #aaa; margin-bottom: 5px; text-transform: uppercase; font-weight: 600; }
+        
+        input, select, textarea { 
+            width: 100%; padding: 14px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.1); 
+            border-radius: 10px; background: rgba(0,0,0,0.2); color: white; font-size: 14px;
+        }
+
+        .grid-checkbox { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+        .check-item { display: flex; align-items: center; gap: 10px; font-size: 13px; background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px; cursor: pointer; }
+        .check-item input { width: auto; margin-bottom: 0; }
+
+        .btns { display: flex; gap: 12px; margin-top: 10px; }
+        button { flex: 1; padding: 16px; border-radius: 12px; border: none; font-weight: 800; cursor: pointer; text-transform: uppercase; transition: 0.3s; }
+        .next { background: var(--gold); color: #000; }
+        .prev { background: rgba(255,255,255,0.1); color: white; }
+        .send { background: #25d366; color: white; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); }
+        button:hover { transform: scale(1.02); filter: brightness(1.1); }
     </style>
 </head>
 <body>
 
 <div class="header">
-    <img src="https://i.ibb.co/NdMBHN3N/Airbrush-IMAGE-ENHANCER-1772282903019-1772282903019-1.jpg" class="logo">
-    <h1>CLUBE SIRIUS</h1>
+    <img src="https://i.ibb.co/NdMBHN3N/Airbrush-IMAGE-ENHANCER-1772282903019-1772282903019-1.jpg" class="logo" alt="Sirius">
+    <h1>Clube de Desbravadores Sirius</h1>
 </div>
 
 <div class="container">
@@ -45,28 +80,21 @@
     <form id="fSirius">
         
         <div class="step active">
-            <h2>1. Identificação</h2>
+            <h2><i class="fas fa-id-card"></i> Identificação</h2>
             <label>Nome Completo:</label><input type="text" name="Nome" required>
             <label>Função:</label><input type="text" name="Funcao">
-            <div class="grid-opts">
-                <label class="check-item"><input type="radio" name="Sexo" value="M"> Masc.</label>
-                <label class="check-item"><input type="radio" name="Sexo" value="F"> Fem.</label>
-            </div>
             <label>Data de Nascimento:</label><input type="date" name="Nascimento">
-            <label>Estado Civil:</label><input type="text" name="EstadoCivil">
-            <div class="btns"><button type="button" class="next" onclick="nextStep()">Próximo</button></div>
+            <label>Sexo:</label>
+            <select name="Sexo"><option>Masculino</option><option>Feminino</option></select>
+            <div class="btns"><button type="button" class="next" onclick="nextStep()">Começar</button></div>
         </div>
 
         <div class="step">
-            <h2>2. Contatos e Igreja</h2>
-            <label>Telefone:</label><input type="tel" name="Telefone">
-            <label>Celular:</label><input type="tel" name="Celular">
+            <h2><i class="fas fa-envelope"></i> Contatos</h2>
             <label>E-mail:</label><input type="email" name="Email">
-            <label>Batizado (IASD)?</label>
-            <div class="grid-opts">
-                <label class="check-item"><input type="radio" name="Batizado" value="Sim"> Sim</label>
-                <label class="check-item"><input type="radio" name="Batizado" value="Não"> Não</label>
-            </div>
+            <label>Telefone Celular:</label><input type="tel" name="Celular" placeholder="(00) 00000-0000">
+            <label>Batizado na IASD?</label>
+            <select name="Batizado"><option>Sim</option><option>Não</option></select>
             <div class="btns">
                 <button type="button" class="prev" onclick="prevStep()">Voltar</button>
                 <button type="button" class="next" onclick="nextStep()">Próximo</button>
@@ -74,26 +102,11 @@
         </div>
 
         <div class="step">
-            <h2>3. Documentos</h2>
-            <label>RG:</label><input type="text" name="RG">
-            <label>Órgão Expedidor:</label><input type="text" name="OrgExp">
-            <label>CPF:</label><input type="text" name="CPF">
-            <label>Tamanho da Camiseta:</label>
-            <select name="Camiseta">
-                <option>PP</option><option>P</option><option>M</option><option>G</option><option>GG</option><option>EXG</option>
-            </select>
-            <div class="btns">
-                <button type="button" class="prev" onclick="prevStep()">Voltar</button>
-                <button type="button" class="next" onclick="nextStep()">Próximo</button>
-            </div>
-        </div>
-
-        <div class="step">
-            <h2>4. Endereço</h2>
+            <h2><i class="fas fa-map-marked-alt"></i> Endereço</h2>
+            <label>CEP:</label><input type="text" name="CEP">
             <label>Rua e Número:</label><input type="text" name="Endereco">
             <label>Bairro:</label><input type="text" name="Bairro">
-            <label>Cidade:</label><input type="text" name="Cidade">
-            <label>CEP:</label><input type="text" name="CEP">
+            <label>Cidade/Estado:</label><input type="text" name="CidadeEstado">
             <div class="btns">
                 <button type="button" class="prev" onclick="prevStep()">Voltar</button>
                 <button type="button" class="next" onclick="nextStep()">Próximo</button>
@@ -101,54 +114,13 @@
         </div>
 
         <div class="step">
-            <h2>5. Escolaridade</h2>
-            <label>Nível:</label>
-            <select name="EscolaridadeNivel">
-                <option>Fundamental</option><option>Médio</option><option>Superior</option><option>Pós/Mestrado</option>
-            </select>
-            <label>Status:</label>
-            <div class="grid-opts">
-                <label class="check-item"><input type="radio" name="EscolaStatus" value="Cursando"> Cursando</label>
-                <label class="check-item"><input type="radio" name="EscolaStatus" value="Completo"> Completo</label>
-            </div>
-            <label>Nome do Curso / Escola:</label><input type="text" name="NomeCurso">
-            <div class="btns">
-                <button type="button" class="prev" onclick="prevStep()">Voltar</button>
-                <button type="button" class="next" onclick="nextStep()">Próximo</button>
-            </div>
-        </div>
-
-        <div class="step">
-            <h2>6. Filiação (Pais)</h2>
-            <label>Nome do Pai:</label><input type="text" name="NomePai">
-            <label>Tel do Pai:</label><input type="tel" name="TelPai">
-            <label>Nome da Mãe:</label><input type="text" name="NomeMae">
-            <label>Tel da Mãe:</label><input type="tel" name="TelMae">
-            <div class="btns">
-                <button type="button" class="prev" onclick="prevStep()">Voltar</button>
-                <button type="button" class="next" onclick="nextStep()">Próximo</button>
-            </div>
-        </div>
-
-        <div class="step">
-            <h2>7. Emergência</h2>
-            <label>Nome de Contato:</label><input type="text" name="EmergenciaNome">
-            <label>Parentesco:</label><input type="text" name="EmergenciaGrau">
-            <label>Telefone de Emergência:</label><input type="tel" name="EmergenciaTel">
-            <div class="btns">
-                <button type="button" class="prev" onclick="prevStep()">Voltar</button>
-                <button type="button" class="next" onclick="nextStep()">Próximo</button>
-            </div>
-        </div>
-
-        <div class="step">
-            <h2>8. Ficha Médica I</h2>
-            <label>Nº Cartão SUS:</label><input type="text" name="SUS">
+            <h2><i class="fas fa-notes-medical"></i> Ficha Médica</h2>
             <label>Tipo Sanguíneo:</label>
-            <select name="Sangue">
-                <option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option><option>O+</option><option>O-</option>
-            </select>
-            <label>Plano de Saúde (Se tiver):</label><input type="text" name="PlanoSaude">
+            <select name="Sangue"><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>O+</option><option>O-</option></select>
+            <label>Problemas de Saúde / Alergias:</label>
+            <textarea name="Alergias" rows="2" placeholder="Descreva aqui..."></textarea>
+            <label>Remédios Contínuos:</label>
+            <input type="text" name="Remedios">
             <div class="btns">
                 <button type="button" class="prev" onclick="prevStep()">Voltar</button>
                 <button type="button" class="next" onclick="nextStep()">Próximo</button>
@@ -156,32 +128,13 @@
         </div>
 
         <div class="step">
-            <h2>9. Histórico de Doenças</h2>
-            <p style="font-size:10px; margin-bottom:10px">Marque as doenças que já teve:</p>
-            <div class="grid-opts">
-                <label class="check-item"><input type="checkbox" name="Doenca" value="Catapora"> Catapora</label>
-                <label class="check-item"><input type="checkbox" name="Doenca" value="Dengue"> Dengue</label>
-                <label class="check-item"><input type="checkbox" name="Doenca" value="Meningite"> Meningite</label>
-                <label class="check-item"><input type="checkbox" name="Doenca" value="Asma"> Asma</label>
-                <label class="check-item"><input type="checkbox" name="Doenca" value="Diabetes"> Diabetes</label>
-                <label class="check-item"><input type="checkbox" name="Doenca" value="Alergia"> Alergia</label>
-            </div>
-            <label>Outras observações médicas:</label>
-            <textarea name="ObsMedica" rows="3"></textarea>
-            <div class="btns">
-                <button type="button" class="prev" onclick="prevStep()">Voltar</button>
-                <button type="button" class="next" onclick="nextStep()">Próximo</button>
-            </div>
-        </div>
-
-        <div class="step">
-            <h2>10. Finalizar</h2>
-            <p style="font-size: 12px; line-height: 1.5; color: #8b949e; margin-bottom: 20px;">
-                "Me responsabilizo por todas as informações desta Ficha de Cadastro e Ficha Médica, e garanto como fiel e verdadeiro."
+            <h2><i class="fas fa-check-double"></i> Tudo Pronto!</h2>
+            <p style="font-size: 13px; color: #ccc; margin-bottom: 20px; line-height: 1.6;">
+                Ao clicar no botão abaixo, os dados serão formatados e enviados para o WhatsApp oficial do Clube Sirius.
             </p>
             <div class="btns">
-                <button type="button" class="prev" onclick="prevStep()">Voltar</button>
-                <button type="button" class="send" onclick="sendWhatsApp()">ENVIAR VIA WHATSAPP</button>
+                <button type="button" class="prev" onclick="prevStep()">Revisar</button>
+                <button type="button" class="send" onclick="sendWhatsApp()">Enviar para WhatsApp</button>
             </div>
         </div>
 
@@ -194,22 +147,24 @@
     const bar = document.getElementById("bar");
 
     function nextStep() {
-        steps[currentStep].classList.remove("active");
-        currentStep++;
-        steps[currentStep].classList.add("active");
-        updateBar();
-        window.scrollTo(0,0);
+        if (currentStep < steps.length - 1) {
+            steps[currentStep].classList.remove("active");
+            currentStep++;
+            steps[currentStep].classList.add("active");
+            updateProgress();
+        }
     }
 
     function prevStep() {
-        steps[currentStep].classList.remove("active");
-        currentStep--;
-        steps[currentStep].classList.add("active");
-        updateBar();
-        window.scrollTo(0,0);
+        if (currentStep > 0) {
+            steps[currentStep].classList.remove("active");
+            currentStep--;
+            steps[currentStep].classList.add("active");
+            updateProgress();
+        }
     }
 
-    function updateBar() {
+    function updateProgress() {
         let percent = ((currentStep + 1) / steps.length) * 100;
         bar.style.width = percent + "%";
     }
@@ -217,21 +172,14 @@
     function sendWhatsApp() {
         const form = document.getElementById("fSirius");
         const formData = new FormData(form);
-        let message = "*SIRIUS - NOVA FICHA DE CADASTRO*%0A%0A";
+        let msg = "*NOVO CADASTRO - CLUBE SIRIUS*%0A------------------------------%0A";
         
-        const data = {};
         formData.forEach((value, key) => {
-            if(!data[key]) { data[key] = value; return; }
-            if(!Array.isArray(data[key])) { data[key] = [data[key]]; }
-            data[key].push(value);
+            if(value) msg += `*${key}:* ${value}%0A`;
         });
 
-        for (let key in data) {
-            message += `*${key}:* ${data[key]}%0A`;
-        }
-
-        const phone = "559291404115";
-        window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+        const phone = "559291404115"; 
+        window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
     }
 </script>
 
